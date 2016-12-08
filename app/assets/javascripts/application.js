@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.ui.all
 //= require jquery.ui.datepicker-ja
 //= require jquery.turbolinks
 //= require turbolinks
