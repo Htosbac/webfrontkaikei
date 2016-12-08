@@ -47,7 +47,7 @@
           <th class="m_roomname">部屋名</th>
         </tr>
       </thead>
-
+      
       <tbody>
           <tr>
             <td class="m_checkoutday" style="text-align:left;"><%= @invoice.checkoutday %></td>
@@ -75,10 +75,10 @@
           <tr>
             <td class="m_productdate" style="text-align:left;"><%= b.productdate %></td>
             <td class="m_productname" style="text-align:left;">
-            <% if b.product_id.nil? %>
+            <% if b.productname.empty? %>
               <%= b.producttype.name %>
             <% else %>
-              <%= b.product.name %>
+              <%= b.productname %>
             <% end %>
             </td>
             <td class="m_productprice" style="text-align:right;"><%= number_with_delimiter(b.productprice.floor) %></td>

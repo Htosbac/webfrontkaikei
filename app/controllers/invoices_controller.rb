@@ -21,7 +21,6 @@ class InvoicesController < ApplicationController
     @rooms = current_user.rooms.all
     @types = Producttype.none # 最初は空を設定
     @products = Product.none # 最初は空を設定
-    @price = 0
   end
 
 
@@ -86,15 +85,10 @@ class InvoicesController < ApplicationController
   end
   def type_select
     # pluckで敢えて配列にしています。
-    @products = Product.where(productcategory_id: params[:category_id]).where(producttype_id: params[:type_id]).pluck(:name, :id)
+    @products = Product.where(productcategory_id: params[:category_id]).where(producttype_id: params[:type_id]).pluck(:name, :name)
     @idx = params[:idx]
     # 初期値
     @products.unshift(["選択してください", ""])
-  end
-  def name_select
-    # pluckで敢えて配列にしています。
-    @price = current_user.products.where(id: params[:product_id]).pluck(:price)
-    @idx = params[:idx]
   end
 
   private
