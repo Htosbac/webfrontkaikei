@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.datepicker
 //= require jquery.turbolinks
 //= require turbolinks
 //= require nested_form_fields
