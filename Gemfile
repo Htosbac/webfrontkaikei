@@ -62,3 +62,5 @@ gem 'nested_form_fields'
 gem 'ransack'
 
 gem 'chartkick'
+
+gem 'rails_12factor'
