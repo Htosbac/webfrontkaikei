@@ -1,12 +1,10 @@
-//====_form.html.erb================================================================//
-.ui-datepicker { z-index: 1000 !important; }
-
 .form-left {
     width: 60%;
     height: 100%;
     float: left;
     display: block;
     padding-bottom: 10px;
+    //    border: 1px dotted #000;
 }
 
 .form-left ul {
@@ -70,29 +68,30 @@
     background: #999;
 }
 
-/* 明細テーブル */
 #tables {
     clear: left;
     border: 1px solid #000;
-    max-width: 900px;
+    //    padding-left: 10px;
     width: 100%;
+    //    display: block;
 }
 
-#tables.addrow input {
+//.origin {
+//    display: none;
+//}
+#tables div input {
     margin-bottom: 10px;
 }
 
-#tbl {
+table #tbl {
     border-collapse: collapse;
+    //    text-align: center;
     border-left: 1px solid #ccc;
+    width: 80%;
 }
 
-#tbl thead, #tbl tbody {
-    display: block;
-}
-
-#tbl thead th {
-    padding: 1px;
+table#tbl thead th {
+    padding: 5px;
     font-weight: bold;
     border-top: 1px solid #ccc;
     border-right: 1px solid #ccc;
@@ -100,7 +99,8 @@
     background: #dcdcd1;
 }
 
-#tbl tbody th {
+table#tbl tbody th {
+    //    padding: 5px;
     font-weight: bold;
     vertical-align: top;
     border-right: 1px solid #ccc;
@@ -108,86 +108,24 @@
     background: #ececec;
 }
 
-#tbl input {
+table#tbl input {
     margin: 0px auto;
     font-size: 16px;
+    //    vertical-align: middle;
 }
 
-#tbl td {
+table#tbl td {
+    //    padding: 5px;
     vertical-align: middle;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }
-
-@media screen and (min-width:961px) {
-    .b_day {
-        width: 170px;
-    }
-    .b_Pcategory {
-        width: 140px;
-    }
-    .b_Ptype {
-        width: 140px;
-    }
-    .b_Pname {
-        width: 140px;
-    }
-    .b_price {
-        width: 85px;
-    }
-    .b_nb {
-        width: 70px;
-    }
-    .b_sumprice {
-        width: 85px;
-    }
-    .b_del {
-        width: 40px;
-    }
-}
-
-@media only screen and (min-width:376px) and (max-width:960px) {
-    .b_day {
-        width: 170px;
-    }
-    .form-date2 {
-        font-size: 11px;
-    }
-    .b_Pcategory {
-        width: 110px;
-    }
-    .b_Ptype {
-        width: 110px;
-    }
-    .b_Pname {
-        width: 110px;
-    }
-    .b_price {
-        width: 73px;
-    }
-    .b_nb {
-        width: 50px;
-    }
-    .b_sumprice {
-        width: 73px;
-    }
-    .b_del {
-        width: 30px;
-    }
-}
-
 
 .sototal {
     margin-top: 50px;
     font-size: 16px;
     line-height: 1.428571429;
     text-align: right;
-}
-
-.form-control2 {
-  width: 100%;
-  font-size: 16px;
-  line-height: 1.428571429;
 }
 
 .form-date2 {
@@ -202,14 +140,6 @@
     font-size: 16px;
     line-height: 1.428571429;
     width: 95%;
-    text-align: right;
-    margin: 0px auto;
-}
-
-.form-number3 {
-    font-size: 16px;
-    line-height: 1.428571429;
-    width: 30%;
     text-align: right;
     margin: 0px auto;
 }
@@ -263,7 +193,7 @@
     border: 1px solid #1f89e2;
 }
 
-//====show.html.erb================================================================//
+//---show.html.erb---//
 .content-print {
     width: 100%;
     height: 100%;
@@ -278,10 +208,12 @@
     width: 100%;
     margin-bottom: 20px;
     padding: 5px;
+    //    border: 1px solid #000;
 }
 
 #name {
     border-bottom: 1px solid #000;
+    //    border: 1px solid #000;
     width: 40%;
     float: left;
     padding: 2px;
@@ -305,7 +237,7 @@
     content: "";
 }
 
-.meisai_top {
+table.meisai_top {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
@@ -314,11 +246,7 @@
     margin-bottom: 20px;
 }
 
-.meisai_top thead, .meisai_top tbody {
-    display: block;
-}
-
-.meisai_top thead th {
+table.meisai_top thead th {
     padding: 5px;
     font-weight: bold;
     border-top: 1px solid #000;
@@ -327,7 +255,7 @@
     background: #ccc;
 }
 
-.meisai_top tbody th {
+table.meisai_top tbody th {
     padding: 5px;
     font-weight: bold;
     vertical-align: top;
@@ -336,80 +264,12 @@
     background: #ececec;
 }
 
-.meisai_top td {
+table.meisai_top td {
     padding: 5px;
     vertical-align: top;
     border-right: 1px solid #000;
     border-bottom: 1px solid #000;
 }
-
-@media screen and (min-width:961px) {
-    .m_checkoutday {
-        width: 170px;
-    }
-    .m_stays {
-        width: 170px;
-    }
-    .m_adults {
-        width: 170px;
-    }
-    .m_childs {
-        width: 170px;
-    }
-    .m_roomname {
-        width: 170px;
-    }
-    .m_productdate {
-        width: 130px;
-    }
-    .m_productname {
-        width: 245px;
-    }
-    .m_productprice {
-        width: 170px;
-    }
-    .m_productnb {
-        width: 130px;
-    }
-    .m_total {
-        width: 170px;
-    }
-}
-
-@media only screen and (min-width:376px) and (max-width:960px) {
-    .m_checkoutday {
-        width: 140px;
-    }
-    .m_stays {
-        width: 140px;
-    }
-    .m_adults {
-        width: 140px;
-    }
-    .m_childs {
-        width: 140px;
-    }
-    .m_roomname {
-        width: 140px;
-    }
-    
-    .m_productdate {
-        width: 100px;
-    }
-    .m_productname {
-        width: 215px;
-    }
-    .m_productprice {
-        width: 140px;
-    }
-    .m_productnb {
-        width: 100px;
-    }
-    .m_total {
-        width: 140px;
-    }
-}
-
 
 #price {
     width: 30%;
@@ -435,100 +295,4 @@
 
 .link {
     clear: right;
-}
-
-//====index.html.erb================================================================//
-.i_print, .i_edit, .i_destroy {
-    width: 40px;
-}
-@media screen and (min-width:961px) {
-    .i_customer {
-         width: 200px;
-    }
-    .i_checkoutday {
-         width: 120px;
-    }
-    .i_stays {
-         width: 40px;
-    }
-    .i_adults {
-         width: 40px;
-    }
-    .i_childs {
-         width: 40px;
-    }
-    .i_roomname {
-         width: 130px;
-    }
-    .i_sototal {
-         width: 80px;
-    }
-}
-
-@media only screen and (min-width:376px) and (max-width:960px) {
-    .i_customer {
-        width: 140px;
-        font-size: 15px;
-    }
-    .i_checkoutday {
-         width: 100px;
-        font-size: 13px;
-    }
-    .i_stays {
-         width: 40px;
-    }
-    .i_adults {
-         width: 40px;
-    }
-    .i_childs {
-         width: 40px;
-    }
-    .i_roomname {
-         width: 90px;
-        font-size: 15px;
-    }
-    .i_sototal {
-         width: 53px;
-        font-size: 15px;
-    }
-}
-
-.search-date {
-    width: 80px;
-    font-size: 14px;
-    line-height: 1.428571429;
-}
-
-#displaymm {
-    font-size: 20px;
-    font-weight: bold;
-    position: relative;
-    padding: .5em .75em;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-#displaymm::before,
-#displaymm::after {
-    position: absolute;
-    top: 100%;
-    left: 30px;
-    content: '';
-    height: 0;
-    width: 0;
-    border: 10px solid transparent;
-}
-
-#displaymm::before {
-    border-top: 15px solid #ccc;
-}
-
-#displaymm::after {
-    margin-top: -2px;
-    border-top: 15px solid #fff;
-}
-
-#searchmm {
-    margin-left: 50%;
 }

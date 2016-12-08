@@ -23,8 +23,8 @@ a:hover {
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
-//  padding-left: 15px;
-//  padding-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   clear: both;
 }
 
@@ -144,25 +144,17 @@ footer small {
   background-color: #28b086;
 }
 
-/*　「登録・更新」ボタン　*/
+/*　「編集」ボタン　*/
 .edit-btn {
-    background-color: #28b086;
-    cursor: pointer;
-    box-shadow: 0px 7px #239b76;
+  background-color: #239b76;
     font-weight: bold;
     margin-left: 30%;
 }
 
 .edit-btn:hover {
-//  background-color: #28b086;
+  background-color: #28b086;
   color: white;
   text-decoration: none;
-}
-
-.edit-btn:active {
-    position: relative;
-    top: 7px;
-    box-shadow: none;
 }
 
 /*　「戻る」ボタン　*/
@@ -176,49 +168,6 @@ footer small {
   text-decoration: none;
 }
 
-/*　「検索」ボタン　*/
-.searchbtn {
-    position: relative;
-    background-color: dimgrey;
-    border-radius: 4px;
-    border-color: black;
-    color: #fff;
-    font-weight: bold;
-    -webkit-transition: none;
-    transition: none;
-    box-shadow: 0 2px 0 #333;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-    cursor: pointer;
-}
-
-.searchbtn:active {
-    top: 3px;
-    box-shadow: none;
-}
-
-/*　「newページ移動」ボタン　*/
-.newbtn {
-    position: relative;
-    background-color: dimgrey;
-    border-radius: 4px;
-    border-color: black;
-    color: #fff;
-    font-weight: bold;
-    -webkit-transition: none;
-    transition: none;
-    box-shadow: 0 5px 0 #333;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-    padding: 5px 15px;
-}
-
-.newbtn:active {
-    top: 3px;
-    box-shadow: none;
-}
-
-.newbtn:hover {
-    color: #fff;
-}
 
 /* フォーム================================ */
 input, textarea, select {
@@ -228,109 +177,43 @@ input, textarea, select {
   border-radius: 3px;
 }
 
-table.tabletype {
-    border-collapse: separate;
-    border-spacing: 0;
-    text-align: left;
-    line-height: 1.5;
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    width: 90%;
-    margin: 0 10px 20px;
-}
-
-table.tabletype th {
-    width: 20%;
-    padding: 5px 10px;
-    font-weight: bold;
-    text-align: right;
-    vertical-align: middle;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #fff;
-    border-left: 1px solid #fff;
-    background: #AAAAAA;
-}
-
-table.tabletype td {
+.field {
     width: 80%;
-    padding: 5px 10px;
-    vertical-align: top;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    //    background: #fff;
+    height: 100%;
+//    float: left;
+    display: block;
+    padding-bottom: 10px;
+//    border: 1px dotted #000;
+}
+.field ul {
+    padding: 0px;
+    margin: 0px auto;
 }
 
-table.tabletype2 {
-    border-collapse: separate;
-    border-spacing: 0;
-    text-align: left;
-    line-height: 1.5;
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    width: 90%;
-    margin: 0 10px 20px;
+.field li {
+    color: #000000;
+    padding: 0px 0px 10px;
+    height: 100%;
 }
-
-table.tabletype2 th {
-    width: 35%;
-    padding: 5px 10px;
-    font-weight: bold;
+.field li span {
+    display: inline-block;
+    color: #000000;
+    width: 25%;
     text-align: right;
-    vertical-align: middle;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #fff;
-    border-left: 1px solid #fff;
-    background: #AAAAAA;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;;
 }
-
-table.tabletype2 td {
-    width: 65%;
-    padding: 5px 10px;
-    vertical-align: top;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    //    background: #fff;
-}
-//.field {
-//    width: 80%;
-//    height: 100%;
-////    float: left;
-//    display: block;
-//    padding-bottom: 10px;
-////    border: 1px dotted #000;
-//}
-//.field ul {
-//    padding: 0px;
-//    margin: 0px auto;
-//}
-//
-//.field li {
-//    color: #000000;
-//    padding: 0px 0px 10px;
-//    height: 100%;
-//}
-//.field li span {
-//    display: inline-block;
-//    color: #000000;
-//    width: 25%;
-//    text-align: right;
-//    font-weight: bold;
-//    margin: 0px;
-//    padding: 0px;;
-//}
 
 .form-control {
-  width: 80%;
+  width: 50%;
   font-size: 16px;
   line-height: 1.428571429;
 }
-
 .form-date {
     font-size: 16px;
     line-height: 1.428571429;
-    width: 60%;
+    width: 25%;
     text-align:center;
 }
 .form-number {
@@ -357,7 +240,7 @@ table.tabletype2 td {
 .alert {
   margin-bottom: 20px;
   border-radius: 4px;
-  line-height: 25px;
+  line-height: 40px;
   padding-left: 15px;
   font-size: small;
 }
@@ -378,32 +261,19 @@ table.tabletype2 td {
 
 
 /* テーブル================================ */
-.datalist {
+table.datalist {
     border-collapse: collapse;
     text-align: center;
     line-height: 1.5;
     border-left: 1px solid #ccc;
+    width: 95%;
+//    height: 300px;
+//    border: 2px solid #000;
+//    overflow: visible;
 }
 
-.datalist, .datalist thead, .datalist tbody {
-    display: block;
-}
-
-.datalist tbody {
-    overflow-y: scroll;
-    height: 300px;//テーブルの高さ
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-}
-
-@media only screen and (min-width:376px) and (max-width:960px) {
-    .datalist tbody {
-         height: 500px;//テーブルの高さ
-    }
-}
-
-.datalist thead th {
-    padding: 5px;
+table.datalist thead th {
+//    padding: 10px;
     font-weight: bold;
     border-top: 1px solid #ccc;
     border-right: 1px solid #ccc;
@@ -411,8 +281,8 @@ table.tabletype2 td {
     background: #dcdcd1;
 }
 
-.datalist tbody th {
-    padding: 5px;
+table.datalist tbody th {
+//    padding: 10px;
     font-weight: bold;
     vertical-align: top;
     border-right: 1px solid #ccc;
@@ -420,15 +290,9 @@ table.tabletype2 td {
     background: #ececec;
 }
 
-
-.datalist td {
-    padding: 5px;
+table.datalist td {
+//    padding: 10px;
     vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    background: white;
-}
-
-.edit, .destroy {
-    width: 50px;
 }

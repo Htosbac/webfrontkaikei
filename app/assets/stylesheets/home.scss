@@ -1,29 +1,3 @@
-/*recommen-entry*/
-.recommend-entry {
-    position: relative;
-    border: 1px solid #666;
-    padding: 10px 30px;
-    margin: 30px 20px 0px;
-    width: 30%;
-    float: left;
-//    background: #fff;
-}
-
-.recommend_title {
-    position: absolute;
-    top: -13px;
-    left: 20px;
-    font-weight: bold;
-    font-size: 120%;
-    background: #eee;
-    padding: 0 .5em;
-}
-
-.recommend_title:before {
-    margin-right: 10px;
-    font-family: "blogicon";
-//    content: "\f033";
-    display: inline-block;
-}
-
-
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
