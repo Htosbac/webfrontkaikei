@@ -1,4 +1,3 @@
-
 #カレンダー表示
 #$ = ->
 # $(".datepicker").datepicker({

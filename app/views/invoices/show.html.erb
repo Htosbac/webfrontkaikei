@@ -1,3 +1,5 @@
+<!--<p id="notice">% notice %></p>-->
+
 <div class="content-print">
   <h1>請求・領収書</h1>
    
@@ -5,7 +7,7 @@
    <div class="top clearfix">
     
     <div id="name" style="font-size: 120%;">
-      <strong style="padding-right: 10px; font-size: 80%">お客様名:</strong>
+      <strong style="padding-right: 10px;">お客様名:</strong>
       <%= @invoice.customer %>
       <span style="float: right">様</span>
     </div>
@@ -24,12 +26,6 @@
          <li>
              <%= @invoice.user.address %>
          </li>
-         <% if @invoice.user.address2.nil? %>
-         <% else %>
-           <li>
-             <%= @invoice.user.address2 %>
-           </li>
-         <% end %>
          <li>
              TEL:<%= @invoice.user.tel %>&nbsp;
              FAX:<%= @invoice.user.fax %>
@@ -49,7 +45,6 @@
           <th class="m_adults">大人数</th>
           <th class="m_childs">小人数</th>
           <th class="m_roomname">部屋名</th>
-          <th class="m_sototal">ご請求金額</th>
         </tr>
       </thead>
 
@@ -60,7 +55,6 @@
             <td class="m_adults" style="text-align:right;"><%= @invoice.adults %></td>
             <td class="m_childs" style="text-align:right;"><%= @invoice.childs %></td>
             <td class="m_roomname" style="text-align:left;"><%= @invoice.room.name %></td>
-            <td class="m_sototal" style="text-align:right;"><%=number_with_delimiter(@invoice.sototal.floor) %></td>
           </tr>
       </tbody>
     </table>
@@ -77,14 +71,14 @@
       </thead>
 
       <tbody>
-        <% @billingdetails.order("productcategory_id desc, producttype_id").each do |b| %>
+        <% @billingdetails.each do |b| %>
           <tr>
             <td class="m_productdate" style="text-align:left;"><%= b.productdate %></td>
             <td class="m_productname" style="text-align:left;">
-            <% if b.productname.empty? %>
+            <% if b.product_id.nil? %>
               <%= b.producttype.name %>
             <% else %>
-              <%= b.productname %>
+              <%= b.product.name %>
             <% end %>
             </td>
             <td class="m_productprice" style="text-align:right;"><%= number_with_delimiter(b.productprice.floor) %></td>
@@ -95,18 +89,19 @@
       </tbody>
     </table>
 
-<!--
     <ul id="price">
+<!--
+        <li>
+            <span>宿泊料金:</span>
+            %= number_with_delimiter(@invoice.roomfee.floor) %>
+        </li>
+-->
         <li style="font-size: 120%;">
             <span>請求金額:</span>
-            <strong>%=number_with_delimiter(@invoice.sototal.floor) %>円</strong>
+            <strong><%=number_with_delimiter(@invoice.sototal.floor) %></strong>
         </li>
     </ul>
--->
-
-    <div class="thank">
-        ご利用有難う御座いました。またのお越しをお待ちしております。
-    </div>
+    
 </div>
 
 <div class="link">

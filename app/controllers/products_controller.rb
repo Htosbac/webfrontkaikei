@@ -52,6 +52,7 @@ class ProductsController < ApplicationController
     else
       render :index
     end
+#    redirect_to products_path
   end
 
   # ajax

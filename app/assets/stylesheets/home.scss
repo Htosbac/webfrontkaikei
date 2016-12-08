@@ -1,10 +1,38 @@
+///*recommen-entry*/
+//.recommend-entry {
+//    position: relative;
+//    border: 1px solid #666;
+//    padding: 10px 30px;
+//    margin: 30px 20px 0px;
+//    width: 30%;
+//    float: left;
+////    background: #fff;
+//}
+//
+//.recommend_title {
+//    position: absolute;
+//    top: -13px;
+//    left: 20px;
+//    font-weight: bold;
+//    font-size: 120%;
+//    background: #eee;
+//    padding: 0 .5em;
+//}
+//
+//.recommend_title:before {
+//    margin-right: 10px;
+//    font-family: "blogicon";
+////    content: "\f033";
+//    display: inline-block;
+//}
+
+
 table.brwsr1 {
     font-size: 16px;
     margin: 0 auto;
     border-collapse: separate;
     border-spacing: 0px 1px;
-    width: 95%;
-    margin-bottom: 20px;
+    width: 80%;
 }
  
 table.brwsr1 th {
@@ -36,7 +64,7 @@ table.brwsr1 td.r2 {
     width: 17%;
     border-left: #fff 1px solid;
     border-right: #999 1px solid;
-    background: #3FB8AF;
+    background: #3d93b6;
 }
  
 table.brwsr1 th.r2,
@@ -52,87 +80,31 @@ table.brwsr1 td.r3 {
     width: 17%;
     border-left: #fff 1px solid;
     border-right: #999 1px solid;
-    background: #7FC7AF;
+    background: #99ddcc;
 }
  
 table.brwsr1 th.r4,
 table.brwsr1 td.r4 {
     width: 17%;
     border-left: #fff 1px solid;
-    background: #DAD8A7;
+    background: #6dce76;
 }
 
 table.brwsr1 th.r5,
 table.brwsr1 td.r5 {
     width: 17%;
     border-left: #fff 1px solid;
-    background: #FF9E9D;
+    background: #d9d28c;
 }
 
 table.brwsr1 th.r6,
 table.brwsr1 td.r6 {
     width: 17%;
     border-left: #fff 1px solid;
-    background: #FEC6B7;
+    background: #dfcd9e;
 }
 
 table.brwsr1 td.datestyle {
     font-size: 14px;
     text-align: center;
 }
-
-#graph {
-    margin: 0 auto 20px;
-}
-
-#pies {
-    width: 100%;
-    margin: 30px auto 0;
-}
-
-#graphpie {
-    width: 43%;
-    float: left;
-    padding: 0 20px;
-    margin: 0 10px;
-}
-
-
-#graphpie2 {
-    width: 43%;
-    float: left;
-    padding: 0 20px;
-}
-
-
-#disyear {
-    font-size: 20px;
-    font-weight: bold;
-    position: relative;
-    padding: .5em .75em;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    z-index: 2;
-}
-
-#disyear::before,
-#disyear::after {
-    position: absolute;
-    top: 100%;
-    left: 30px;
-    content: '';
-    height: 0;
-    width: 0;
-    border: 10px solid transparent;
-}
-
-#disyear::before {
-    border-top: 15px solid #ccc;
-}
-
-#disyear::after {
-    margin-top: -2px;
-    border-top: 15px solid #fff;
-}
-

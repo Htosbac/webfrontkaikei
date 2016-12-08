@@ -5,7 +5,10 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<!--
+    %= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    %= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+-->
   </head>
 
   <body>
@@ -18,8 +21,7 @@
              <li><%= link_to "御会計", invoices_path %></li>
              <li><%= link_to "商品登録", products_path %></li>
              <li><%= link_to "部屋登録", rooms_path %></li>
-<!--             <li>%= link_to current_user.name, current_user %></li>-->
-             <li><%= link_to "ユーザー", current_user %></li>
+             <li><%= link_to current_user.name, current_user %></li>
              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
            </ul>
            <% else %>

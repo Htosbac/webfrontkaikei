@@ -1,10 +1,10 @@
-<p id="notice"><% notice %></p>
+<p id="notice"><%= notice %></p>
 
 <h1>登録商品一覧</h1>
 <%= search_form_for @q do |f| %>
   <%= f.label :productcategory_id_eq, '商品種類:' %>
   <%= f.collection_select :productcategory_id_eq, Productcategory.order(:id), :id, :name, {:prompt => true}, class: 'search-category' %>
-  <%= f.submit class: "searchbtn" %>
+  <%= f.submit class: 'searchbtn'%>
 <% end %>
 
 <table class="datalist" style="width:100%;">

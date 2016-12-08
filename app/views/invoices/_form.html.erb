@@ -4,9 +4,9 @@
       <h2><%= invoice.errors.count %>件のエラ－</h2>
 
       <ul>
-        <% invoice.errors.full_messages.each do |message| %>
+      <% invoice.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-        <% end %>
+      <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,23 +15,23 @@
       <table class="tabletype2">
         <tr>
           <th scope="row"><%= f.label "お客様名:" %></th>
-          <td><%= f.text_field :customer, class: "form-control2" %></td>
+          <td><%= f.text_field :customer, { class: "form-control2"} %></td>
         </tr>
         <tr>
           <th scope="row"><%= f.label "チェックアウト日:" %></th>
-          <td><%= f.text_field :checkoutday, class: "form-date", id: "datepicker" %></td>
+          <td><%= f.text_field :checkoutday, { class: "form-date", id: "datepicker" } %></td>
         </tr>
         <tr>
           <th scope="row"><%= f.label "宿泊数:" %></th>
-          <td><%= f.number_field :stays, class: "form-number3" %>泊</td>
+          <td><%= f.number_field :stays, { class: "form-number3"} %>泊</td>
         </tr>
         <tr>
           <th scope="row"><%= f.label "人数－－－大人:" %></th>
-          <td><%= f.number_field :adults, class: "form-number3" %>人</td>
+          <td><%= f.number_field :adults, { class: "form-number3"} %>人</td>
         </tr>
         <tr>
           <th scope="row"><%= f.label "子供:" %></th>
-          <td><%= f.number_field :childs, class: "form-number3" %>人</td>
+          <td><%= f.number_field :childs, { class: "form-number3"} %>人</td>
         </tr>
       </table>
   </div>
@@ -42,12 +42,13 @@
       <% end %>
   </div>
 
+
   <div id="tables">
     <div class="addrow">新しい行を追加：
        <%= f.add_nested_fields_link :billingdetails, '追加', class: 'addbtn', role: 'button' %>
     </div>
     <table id="tbl">
-        <thead>
+        <thead style="width:900px;">
             <tr>
                 <th class="b_day">日付</th>
                 <th class="b_Pcategory">商品種類</th>
@@ -55,7 +56,7 @@
                 <th class="b_Pname">商品名</th>
                 <th class="b_price">単価</th>
                 <th class="b_nb">数量</th>
-                <th class="b_sumprice">合計</th>
+                <th class="b_sumprice">金額</th>
                 <th class="b_del"></th>
             </tr>
         </thead>
@@ -71,13 +72,10 @@
                   <%= b.collection_select :producttype_id, @types, :id, :name, {:prompt => true}, class: 'form-select2', onchange: 'selecttype(this)' %>
                 </td>
                 <td class="b_Pname" style="text-align:center;">
-                  <%= b.text_field :productname, class: 'form-control3' %>
-                  <%= b.collection_select :product_id, @products, :id, :name, {:prompt => true}, class: 'form-select3', onchange: 'selectname(this)' %>
+                  <%= b.collection_select :product_id, @products, :id, :name, {:prompt => true}, class: 'form-select2', onchange: 'selectname(this)' %>
                 </td>
                 <td class="b_price" style="text-align:center;">
-                  <%= b.text_field :productprice, class: 'form-price2 product_price', onchange: 'totalchange(this)' %>
-                  <div style="display:none;">
-                  <%= b.collection_select :dummy, @prices, :id, :price, {:prompt => true}, class: 'form-select2' %></div>
+                  <%= b.text_field :productprice, class: 'form-price2 product_price', value: @price, onchange: 'totalchange(this)' %>
                 </td>
                 <td class="b_nb" style="text-align:center;">
                   <%= b.number_field :productnb, class: 'form-number2 product_nb', onchange: 'totalchange(this)' %>
@@ -86,9 +84,9 @@
                   <%= b.text_field :total, class: 'form-price2 product_total' %>
                 </td>
                 <td class="b_del" style="text-align:center;">
-                  <%= b.remove_nested_fields_link '×', class: 'delbtn', role: 'button', onclick: 'delclick(this)' %>
+                  <%= b.remove_nested_fields_link '×', class: 'delbtn', role: 'button' %>
                 </td>
-                  <%= b.hidden_field :user_id, :value => params[:user_id] %>
+                <%= b.hidden_field :user_id, :value => params[:user_id] %>
              <% end %>
         </tbody>
     </table>
@@ -96,14 +94,8 @@
 
   <div class="form-left">
       <ul>
-        <li>
-          <span><%= f.label "総合計:" %>&nbsp;&nbsp;</span>
-          <%= f.text_field :sototal, { class: "sototal"} %>円
-        </li>
-        <li>
-          <span>残金:&nbsp;&nbsp;</span>
-          <span id="zankin">0</span>&nbsp;円
-        </li>
+        <li><span><%= f.label "総合計:" %></span>
+        <%= f.text_field :sototal, { class: "sototal"} %>円</li>
       </ul>
   </div>
 
@@ -112,47 +104,25 @@
   </div>
 <% end %>
 
-
-
+<!--%= javascript_tag do %>-->
 <script language="JavaScript">
-  //カレンダー表示と前日の表示-------------------------------------------------------------------------------------//
-//  $(document).ready(function(){
+  //カレンダー表示
+  $(document).ready(function(){
     $("#datepicker").datepicker({
-      dateFormat: 'yy/mm/dd (D)',
-      onSelect: function(date) {
-      var t = $("#datepicker").val();//チェックアウト日を取得
-      var sdate = t.substr(0,4) + "-" + t.substr(5,2) + "-" + t.substr(8,2);//フォーマット変換
-      var msec = Date.parse(sdate);//日付の整数へ変換
-      var ddate = new Date(msec);//Date型へ変換
-      var m_ddate = ddate.setDate(ddate.getDate()-1);//前日の計算
-      var m_m_ddate = new Date(m_ddate);//前日のDate型へ変換
-
-      var y = m_m_ddate.getFullYear();//年の取得
-      var m = m_m_ddate.getMonth()+1;//月の取得
-      var d = m_m_ddate.getDate();//日の取得
-
-      //頭0埋め表示
-      if (m < 10) {
-        m = '0' + m;
-      }
-      if (d < 10) {
-        d = '0' + d;
-      }
-
-      var zenzitu = y + '-' + m + '-' + d;//表示できる前日の取得
-      $("#invoice_billingdetails_attributes_0_productdate").val(zenzitu);
-      }
+      dateFormat: 'yy/mm/dd (D)'
     });
-//  });
+  });
 
 
-  //単価×数量の自動計算-------------------------------------------------------------------------------------//
+  //単価×数量の自動計算
   function totalchange(obj) {
     var objTR = obj.parentNode.parentNode;
     var idx = objTR.sectionRowIndex;
     var tr = $("#tbl tbody tr");
-//    var cells = tr.eq(idx);
+    var cells = tr.eq(idx);
     var len = tr.length - 1;
+    
+
     var price = $("#invoice_billingdetails_attributes_" + idx + "_productprice").val();
     var nb = $("#invoice_billingdetails_attributes_" + idx + "_productnb").val();
     var total = price * nb;
@@ -160,66 +130,28 @@
     //金額表示
     $("#invoice_billingdetails_attributes_" + idx + "_total").val(total);
 
+    var category_id = $("#invoice_billingdetails_attributes_" + idx + "_productcategory_id").val();
     var sum = 0;
-    var nyukin = 0;
-    var zan = 0;
     for (var i = 0; i <= len; i++){
-        
-        var category_id = $("#invoice_billingdetails_attributes_" + i + "_productcategory_id").val();
 
         //入金の場合は合計にいれない
-        if (category_id == 1) {
-            var nyukingaku = $("#invoice_billingdetails_attributes_" + i + "_total").val();
-            nyukin = Number(nyukin) + Number(nyukingaku);//入金の合計
-//            continue;
-        } else {
-            price = $("#invoice_billingdetails_attributes_" + i + "_productprice").val();
-            nb = $("#invoice_billingdetails_attributes_" + i + "_productnb").val();
-            total = price * nb;
-            sum = sum + total;
-        }
-        zan = sum + nyukin;
+        if (category_id == 1) return;
+
+        price = $("#invoice_billingdetails_attributes_" + i + "_productprice").val();
+        nb = $("#invoice_billingdetails_attributes_" + i + "_productnb").val();
+        total = price * nb;
+        sum = sum + total;
     }
-
-      $("#invoice_sototal").val(sum);//総合計表示
-      $("#zankin").text(zan);//残金の表示
-  };
-
-  //単価×数量の自動計算delボタン押時-------------------------------------------------------------------------------------//
-  function delclick(obj) {
-    var objTR = obj.parentNode.parentNode;
-    var idx = objTR.sectionRowIndex;
-    var total  = $("#invoice_billingdetails_attributes_" + idx + "_total").val();
-    var sum = $("#invoice_sototal").val();
-
-    if (total < 0) return;
-    var sum2 = sum - total;
-    //総合計表示
-      $("#invoice_sototal").val(sum2);
+      //総合計表示
+      $("#invoice_sototal").val(sum);
   };
 
 
-  //プルダウン連動-------------------------------------------------------------------------------------//
+  //プルダウン連動
   function selectcategory(obj) {
     var objTR = obj.parentNode.parentNode;
     var idx = objTR.sectionRowIndex;
     var category_id = $("#invoice_billingdetails_attributes_" + idx + "_productcategory_id").val();
-    var hiduke = $("#invoice_billingdetails_attributes_0_productdate").val();
-    var chkday = $("#invoice_billingdetails_attributes_" + idx + "_productdate").val();
-
-    //日付が空白の場合、チェックアウト日の前日の日付を表示
-    if(chkday == "") {
-        $("#invoice_billingdetails_attributes_" + idx + "_productdate").val(hiduke);
-    };
-
-    //入金の場合、数量を-1にする
-    if(category_id == 1) {
-        $("#invoice_billingdetails_attributes_" + idx + "_productnb").val(-1);
-    } else {
-        $("#invoice_billingdetails_attributes_" + idx + "_productnb").val(0);
-    }
-
-    //連動するためのajax呼び出し
     $.get("<%= invoices_category_select_path %>",
         {idx: idx, category_id: category_id },
         function(data){}
@@ -237,17 +169,18 @@
       );
   };
 
-  //商品単価の表示-------------------------------------------------------------------------------------//
+  //商品単価の表示
   function selectname(obj) {
     var objTR = obj.parentNode.parentNode;
     var idx = objTR.sectionRowIndex;
     var product_id = $("#invoice_billingdetails_attributes_" + idx + "_product_id").val();
-    var product_name = $("#invoice_billingdetails_attributes_" + idx + "_product_id option:selected").text();
+//      alert(productss_id);
+//      $("#invoice_billingdetails_attributes_" + idx + "_productprice").val(product_id);
+    $.get("<%= invoices_name_select_path %>",
+        {idx: idx, product_id: product_id},
+        function(data){}
+      );
+  }
 
-    $("#invoice_billingdetails_attributes_" + idx + "_dummy").val(product_id);
-    var tanka = $("#invoice_billingdetails_attributes_" + idx + "_dummy option:selected").text();
-
-    $("#invoice_billingdetails_attributes_" + idx + "_productname").val(product_name);//商品名表示
-    $("#invoice_billingdetails_attributes_" + idx + "_productprice").val(tanka);//単価表示
-  };
 </script>
+<!--% end %>-->

@@ -11,20 +11,16 @@
         <% date = params[:q][:checkoutday_cont] %>
         <!--  検索年月が空白の場合、すべてのデータが表示  -->
         <% if date.empty? %>
-          <%= "　全データ分　" %>
+          <%= "全データ分　" %>
         <% else %>
-          <%= date[0..3] + "年" + date[5..6] + "月分" %>
+          <%= date.slice!(0,4) + "年" + date.slice!(1,2) + "月分" %>
         <% end %>
       <% end %>
  </span>
  <span id="searchmm">
       <%= f.label :checkoutday_cont, "検索年月:" %>
-      <%= f.search_field :checkoutday_cont, class: 'search-date', maxlength: 7, placeholder: 'yyyy/mm' %>
-<!--      %= f.submit class: 'searchbtn' %>-->
-      <!--検索-->
-      <button type="submit" class="searchbtn" id="form_id" onclick="serchclick()">検索</button>
-      <!--CSV出力-->
-      <button type="submit" name="format" value="csv" class="searchbtn">CSV </button>
+      <%= f.search_field :checkoutday_cont , class: 'search-date', maxlength: 7, value: Date.today.strftime("%Y/%m") %>
+      <%= f.submit class: 'searchbtn'%>
  </span>
 <% end %>
 
@@ -61,7 +57,6 @@
     <% end %>
   </tbody>
 </table>
-
 
 <br>
 

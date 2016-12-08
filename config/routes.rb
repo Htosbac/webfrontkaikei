@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 #  resources :users
     get  '/invoices/category_select' => 'invoices#category_select'
     get  '/invoices/type_select' => 'invoices#type_select'
+    get  '/invoices/name_select' => 'invoices#name_select'
   resources :invoices
     # ajax
     get  '/products/category_select' => 'products#category_select'

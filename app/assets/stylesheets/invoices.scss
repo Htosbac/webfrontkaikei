@@ -23,18 +23,12 @@
 .form-left li span {
     display: inline-block;
     color: #000000;
-    width: 35%;
+    width: 25%;
     text-align: right;
     font-weight: bold;
     margin: 0px;
     padding: 0px;
-}
-
-#zankin {
-    width: 15%;
-    text-align: right;
-    font-weight: normal;
-//    border: 1px solid #000;
+    ;
 }
 
 .form-right {
@@ -57,7 +51,7 @@
     left: 1em;
     padding: 0 .5em;
     position: absolute;
-    top: -0.9em;
+    top: -0.8em;
 }
 
 
@@ -79,7 +73,7 @@
 /* 明細テーブル */
 #tables {
     clear: left;
-//    border: 1px solid #000;
+    border: 1px solid #000;
     max-width: 900px;
     width: 100%;
 }
@@ -116,7 +110,7 @@
 
 #tbl input {
     margin: 0px auto;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #tbl td {
@@ -127,7 +121,7 @@
 
 @media screen and (min-width:961px) {
     .b_day {
-        width: 145px;
+        width: 170px;
     }
     .b_Pcategory {
         width: 140px;
@@ -136,7 +130,7 @@
         width: 140px;
     }
     .b_Pname {
-        width: 170px;
+        width: 140px;
     }
     .b_price {
         width: 85px;
@@ -148,13 +142,16 @@
         width: 85px;
     }
     .b_del {
-        width: 35px;
+        width: 40px;
     }
 }
 
 @media only screen and (min-width:376px) and (max-width:960px) {
     .b_day {
-        width: 145px;
+        width: 170px;
+    }
+    .form-date2 {
+        font-size: 11px;
     }
     .b_Pcategory {
         width: 110px;
@@ -163,16 +160,16 @@
         width: 110px;
     }
     .b_Pname {
-        width: 150px;
+        width: 110px;
     }
     .b_price {
-        width: 65px;
+        width: 73px;
     }
     .b_nb {
-        width: 47px;
+        width: 50px;
     }
     .b_sumprice {
-        width: 70px;
+        width: 73px;
     }
     .b_del {
         width: 30px;
@@ -193,13 +190,8 @@
   line-height: 1.428571429;
 }
 
-.form-control3 {
-  width: 82%;
-  line-height: 1.428571429;
-}
-
 .form-date2 {
-    font-size: 8px;
+    font-size: 16px;
     line-height: 1.428571429;
     width: 95%;
     text-align: center;
@@ -229,15 +221,8 @@
     margin: 0px auto;
 }
 
-.form-select3 {
-    font-size: 14px;
-    line-height: 1.428571429;
-    width: 12%;
-    margin: 0px auto;
-}
-
 .form-price2 {
-//    font-size: 12px;
+    font-size: 16px;
     line-height: 1.428571429;
     width: 95%;
     text-align: right;
@@ -278,7 +263,6 @@
     border: 1px solid #1f89e2;
 }
 
-
 //====show.html.erb================================================================//
 .content-print {
     width: 100%;
@@ -291,8 +275,8 @@
 }
 
 .top {
-    width: 95%;
-    margin: 0 auto 20px;
+    width: 100%;
+    margin-bottom: 20px;
     padding: 5px;
 }
 
@@ -361,24 +345,20 @@
 
 @media screen and (min-width:961px) {
     .m_checkoutday {
-        width: 140px;
-    }
-    .m_stays {
-        width: 100px;
-    }
-    .m_adults {
-        width: 100px;
-    }
-    .m_childs {
-        width: 100px;
-    }
-    .m_roomname {
-        width: 220px;
-    }
-    .m_sototal {
         width: 170px;
     }
-
+    .m_stays {
+        width: 170px;
+    }
+    .m_adults {
+        width: 170px;
+    }
+    .m_childs {
+        width: 170px;
+    }
+    .m_roomname {
+        width: 170px;
+    }
     .m_productdate {
         width: 130px;
     }
@@ -398,21 +378,18 @@
 
 @media only screen and (min-width:376px) and (max-width:960px) {
     .m_checkoutday {
-        width: 120px;
+        width: 140px;
     }
     .m_stays {
-        width: 80px;
+        width: 140px;
     }
     .m_adults {
-        width: 80px;
+        width: 140px;
     }
     .m_childs {
-        width: 80px;
+        width: 140px;
     }
     .m_roomname {
-        width: 183px;
-    }
-    .m_sototal {
         width: 140px;
     }
     
@@ -454,10 +431,6 @@
     margin: 0px;
     padding: 0px;
     padding-right: 10px;
-}
-
-.thank {
-    display: none;
 }
 
 .link {
@@ -556,13 +529,6 @@
     border-top: 15px solid #fff;
 }
 
-@media screen and (min-width:961px) {
-    #searchmm {
-      margin-left: 50%;
-    }
-}
-@media only screen and (min-width:376px) and (max-width:960px) {
-    #searchmm {
-      margin-left: 40%;
-    }
+#searchmm {
+    margin-left: 50%;
 }

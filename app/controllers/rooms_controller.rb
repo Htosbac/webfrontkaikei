@@ -51,6 +51,7 @@ class RoomsController < ApplicationController
     else
       render :index
     end
+#    respond_to rooms_path
   end
 
   private

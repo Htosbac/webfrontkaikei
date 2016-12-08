@@ -29,6 +29,25 @@
       <td><%= f.text_field :price, { class: "form-price"} %>円</td>
     </tr>
   </table>
+<!--
+  <div class="field">
+      <ul>
+          <li><span>%= f.label "商品名:" %></span>
+          %= f.text_field :name, { class: "form-control"} %>
+          </li>
+          <li><span>%= f.label "商品種類:" %></span>
+          %= f.collection_select :productcategory_id, Productcategory.all, :id, :name, {:prompt => true}, { class: "form-select"} %>
+          </li>
+          <li><span>%= f.label "中分類:" %></span>
+          %= f.collection_select :producttype_id, @types, :id, :name, {:prompt => true}, { class: "form-select"} %>
+          </li>
+          <li><span>%= f.label "単価:" %></span>
+          %= f.text_field :price, { class: "form-price"} %>円
+          </li>
+      </ul>
+  </div>
+-->
+
   <div class="actions">
     <%= f.submit :class => "btn edit-btn" %>
   </div>

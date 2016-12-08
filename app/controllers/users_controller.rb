@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-      params.require(:user).permit(:name, :email, :phonetic, :pstalcode, :address, :tel, :fax, :invoicename1, :invoicename2, :address2)
+      params.require(:user).permit(:name, :email, :phonetic, :pstalcode, :address, :tel, :fax, :invoicename1, :invoicename2)
   end
     
   def correct_user

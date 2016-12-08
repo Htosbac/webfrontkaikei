@@ -59,5 +59,3 @@ gem 'devise'
 gem 'nested_form_fields'
 
 gem "ransack"
-
-gem "chartkick"
