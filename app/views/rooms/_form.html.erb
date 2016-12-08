@@ -1,0 +1,57 @@
+<%= form_for(room) do |f| %>
+
+  <% if room.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= room.errors.count %>件のエラーがあります。</h2>
+
+      <ul>
+      <% room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="tabletype">
+    <tr>
+      <th scope="row"><%= f.label "部屋名:" %></th>
+      <td><%= f.text_field :name, { class: "form-control"} %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "Ａ:" %></th>
+      <td><%= f.text_field :price1, { class: "form-price"} %>円</td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "Ｂ:" %></th>
+      <td><%= f.text_field :price2, { class: "form-price"} %>円</td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "Ｃ:" %></th>
+      <td><%= f.text_field :price3, { class: "form-price"} %>円</td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "Ｄ:" %></th>
+      <td><%= f.text_field :price4, { class: "form-price"} %>円</td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "Ｅ:" %></th>
+      <td><%= f.text_field :price5, { class: "form-price"} %>円</td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "Ｆ:" %></th>
+      <td><%= f.text_field :price6, { class: "form-price"} %>円</td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "宿泊可能人数:" %></th>
+      <td><%= f.number_field :peoplenb, { class: "form-number"} %>人</td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "部屋タイプ:" %></th>
+      <td><%= f.collection_select :roomtype_id, Roomtype.all, :id, :name, {:prompt => true}, { class: "form-select"} %></td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= f.submit :class => "btn edit-btn" %>
+  </div>
+<% end %>

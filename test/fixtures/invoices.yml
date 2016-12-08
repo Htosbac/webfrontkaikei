@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: MyString
+  checkoutday: MyString
+  stays: 1
+  adults: 1
+  childs: 1
+  room_id: 1
+  roomfee: 9.99
+  sototal: 9.99
+
+two:
+  customer: MyString
+  checkoutday: MyString
+  stays: 1
+  adults: 1
+  childs: 1
+  room_id: 1
+  roomfee: 9.99
+  sototal: 9.99

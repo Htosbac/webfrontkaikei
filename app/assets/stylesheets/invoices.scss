@@ -1,0 +1,568 @@
+//====_form.html.erb================================================================//
+.ui-datepicker { z-index: 1000 !important; }
+
+.form-left {
+    width: 60%;
+    height: 100%;
+    float: left;
+    display: block;
+    padding-bottom: 10px;
+}
+
+.form-left ul {
+    padding: 0px;
+    margin: 0px auto;
+}
+
+.form-left li {
+    color: #000000;
+    padding: 0px 0px 10px;
+    height: 100%;
+}
+
+.form-left li span {
+    display: inline-block;
+    color: #000000;
+    width: 35%;
+    text-align: right;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+#zankin {
+    width: 15%;
+    text-align: right;
+    font-weight: normal;
+//    border: 1px solid #000;
+}
+
+.form-right {
+    width: 35%;
+    height: 100%;
+    float: left;
+    display: block;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 4px;
+    position: relative;
+    z-index: 9;
+}
+
+.form-right::before {
+    background-color: #eee;
+    color: #000;
+    content: "部屋選択";
+    font-weight: bold;
+    left: 1em;
+    padding: 0 .5em;
+    position: absolute;
+    top: -0.9em;
+}
+
+
+.roomlist {
+    display: inline-block;
+    border: 3px solid #999;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.roomlist:hover {
+    background: #999;
+}
+
+/* 明細テーブル */
+#tables {
+    clear: left;
+//    border: 1px solid #000;
+    max-width: 900px;
+    width: 100%;
+}
+
+#tables.addrow input {
+    margin-bottom: 10px;
+}
+
+#tbl {
+    border-collapse: collapse;
+    border-left: 1px solid #ccc;
+}
+
+#tbl thead, #tbl tbody {
+    display: block;
+}
+
+#tbl thead th {
+    padding: 1px;
+    font-weight: bold;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #c00;
+    background: #dcdcd1;
+}
+
+#tbl tbody th {
+    font-weight: bold;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #ececec;
+}
+
+#tbl input {
+    margin: 0px auto;
+    font-size: 14px;
+}
+
+#tbl td {
+    vertical-align: middle;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+@media screen and (min-width:961px) {
+    .b_day {
+        width: 145px;
+    }
+    .b_Pcategory {
+        width: 140px;
+    }
+    .b_Ptype {
+        width: 140px;
+    }
+    .b_Pname {
+        width: 170px;
+    }
+    .b_price {
+        width: 85px;
+    }
+    .b_nb {
+        width: 70px;
+    }
+    .b_sumprice {
+        width: 85px;
+    }
+    .b_del {
+        width: 35px;
+    }
+}
+
+@media only screen and (min-width:376px) and (max-width:960px) {
+    .b_day {
+        width: 145px;
+    }
+    .b_Pcategory {
+        width: 110px;
+    }
+    .b_Ptype {
+        width: 110px;
+    }
+    .b_Pname {
+        width: 150px;
+    }
+    .b_price {
+        width: 65px;
+    }
+    .b_nb {
+        width: 47px;
+    }
+    .b_sumprice {
+        width: 70px;
+    }
+    .b_del {
+        width: 30px;
+    }
+}
+
+
+.sototal {
+    margin-top: 50px;
+    font-size: 16px;
+    line-height: 1.428571429;
+    text-align: right;
+}
+
+.form-control2 {
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.428571429;
+}
+
+.form-control3 {
+  width: 82%;
+  line-height: 1.428571429;
+}
+
+.form-date2 {
+    font-size: 8px;
+    line-height: 1.428571429;
+    width: 95%;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.form-number2 {
+    font-size: 16px;
+    line-height: 1.428571429;
+    width: 95%;
+    text-align: right;
+    margin: 0px auto;
+}
+
+.form-number3 {
+    font-size: 16px;
+    line-height: 1.428571429;
+    width: 30%;
+    text-align: right;
+    margin: 0px auto;
+}
+
+.form-select2 {
+    font-size: 14px;
+    line-height: 1.428571429;
+    width: 95%;
+    margin: 0px auto;
+}
+
+.form-select3 {
+    font-size: 14px;
+    line-height: 1.428571429;
+    width: 12%;
+    margin: 0px auto;
+}
+
+.form-price2 {
+//    font-size: 12px;
+    line-height: 1.428571429;
+    width: 95%;
+    text-align: right;
+    margin: 0px auto;
+}
+
+.delbtn {
+    color: white;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: red;
+    padding: 2px;
+}
+
+.delbtn:hover {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid red;
+}
+
+.addrow {
+    margin: 5px;
+}
+
+.addbtn {
+    color: white;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #1f89e2;
+    padding: 2px 4px;
+}
+
+.addbtn:hover {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #1f89e2;
+}
+
+
+//====show.html.erb================================================================//
+.content-print {
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+}
+
+.content-print h1 {
+    text-align: center;
+}
+
+.top {
+    width: 95%;
+    margin: 0 auto 20px;
+    padding: 5px;
+}
+
+#name {
+    border-bottom: 1px solid #000;
+    width: 40%;
+    float: left;
+    padding: 2px;
+}
+
+#user {
+    width: 50%;
+    float: right;
+    border: 1px solid #000;
+    padding: 2px;
+}
+
+#user ul {
+    padding: 0px;
+    margin: 10px 15px;
+}
+
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.meisai_top {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    line-height: 1;
+    border-left: 1px solid #000;
+    margin-bottom: 20px;
+}
+
+.meisai_top thead, .meisai_top tbody {
+    display: block;
+}
+
+.meisai_top thead th {
+    padding: 5px;
+    font-weight: bold;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 2px solid #000;
+    background: #ccc;
+}
+
+.meisai_top tbody th {
+    padding: 5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    background: #ececec;
+}
+
+.meisai_top td {
+    padding: 5px;
+    vertical-align: top;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+@media screen and (min-width:961px) {
+    .m_checkoutday {
+        width: 140px;
+    }
+    .m_stays {
+        width: 100px;
+    }
+    .m_adults {
+        width: 100px;
+    }
+    .m_childs {
+        width: 100px;
+    }
+    .m_roomname {
+        width: 220px;
+    }
+    .m_sototal {
+        width: 170px;
+    }
+
+    .m_productdate {
+        width: 130px;
+    }
+    .m_productname {
+        width: 245px;
+    }
+    .m_productprice {
+        width: 170px;
+    }
+    .m_productnb {
+        width: 130px;
+    }
+    .m_total {
+        width: 170px;
+    }
+}
+
+@media only screen and (min-width:376px) and (max-width:960px) {
+    .m_checkoutday {
+        width: 120px;
+    }
+    .m_stays {
+        width: 80px;
+    }
+    .m_adults {
+        width: 80px;
+    }
+    .m_childs {
+        width: 80px;
+    }
+    .m_roomname {
+        width: 183px;
+    }
+    .m_sototal {
+        width: 140px;
+    }
+    
+    .m_productdate {
+        width: 100px;
+    }
+    .m_productname {
+        width: 215px;
+    }
+    .m_productprice {
+        width: 140px;
+    }
+    .m_productnb {
+        width: 100px;
+    }
+    .m_total {
+        width: 140px;
+    }
+}
+
+
+#price {
+    width: 30%;
+    float: right;
+    padding: 2px;
+    margin-bottom: 40px;
+}
+
+#price li {
+    border-bottom: 1px solid #000;
+    padding-top: 20px;
+}
+
+#price li span {
+    display: inline-block;
+    width: 45%;
+    text-align: right;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    padding-right: 10px;
+}
+
+.thank {
+    display: none;
+}
+
+.link {
+    clear: right;
+}
+
+//====index.html.erb================================================================//
+.i_print, .i_edit, .i_destroy {
+    width: 40px;
+}
+@media screen and (min-width:961px) {
+    .i_customer {
+         width: 200px;
+    }
+    .i_checkoutday {
+         width: 120px;
+    }
+    .i_stays {
+         width: 40px;
+    }
+    .i_adults {
+         width: 40px;
+    }
+    .i_childs {
+         width: 40px;
+    }
+    .i_roomname {
+         width: 130px;
+    }
+    .i_sototal {
+         width: 80px;
+    }
+}
+
+@media only screen and (min-width:376px) and (max-width:960px) {
+    .i_customer {
+        width: 140px;
+        font-size: 15px;
+    }
+    .i_checkoutday {
+         width: 100px;
+        font-size: 13px;
+    }
+    .i_stays {
+         width: 40px;
+    }
+    .i_adults {
+         width: 40px;
+    }
+    .i_childs {
+         width: 40px;
+    }
+    .i_roomname {
+         width: 90px;
+        font-size: 15px;
+    }
+    .i_sototal {
+         width: 53px;
+        font-size: 15px;
+    }
+}
+
+.search-date {
+    width: 80px;
+    font-size: 14px;
+    line-height: 1.428571429;
+}
+
+#displaymm {
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    padding: .5em .75em;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+#displaymm::before,
+#displaymm::after {
+    position: absolute;
+    top: 100%;
+    left: 30px;
+    content: '';
+    height: 0;
+    width: 0;
+    border: 10px solid transparent;
+}
+
+#displaymm::before {
+    border-top: 15px solid #ccc;
+}
+
+#displaymm::after {
+    margin-top: -2px;
+    border-top: 15px solid #fff;
+}
+
+@media screen and (min-width:961px) {
+    #searchmm {
+      margin-left: 50%;
+    }
+}
+@media only screen and (min-width:376px) and (max-width:960px) {
+    #searchmm {
+      margin-left: 40%;
+    }
+}

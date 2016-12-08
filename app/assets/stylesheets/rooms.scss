@@ -1,0 +1,32 @@
+@media screen and (min-width:961px) {
+    .r_name {
+        width: 150px;
+    }
+    .r_A, .r_B, .r_C, .r_D, .r_E, .r_F {
+        width: 60px;
+    }
+    .r_nb {
+        width: 50px;
+    }
+    .r_type {
+        width: 100px;
+    }
+}
+
+
+@media only screen and (min-width:376px) and (max-width:960px){
+    .r_name {
+        width: 122px;
+    }
+    .r_A, .r_B, .r_C, .r_D, .r_E, .r_F {
+        width: 48px;
+    }
+    .r_nb {
+        width: 40px;
+    }
+    .r_type {
+        width: 60px;
+    }
+}
+
+

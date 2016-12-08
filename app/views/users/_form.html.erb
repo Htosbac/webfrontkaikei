@@ -1,0 +1,62 @@
+<%= form_for(user) do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %>件のエラー:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <table class="usertable">
+       <tbody>
+      <tr>
+        <th><%= f.label "ユーザ名:" %></th>
+        <td><%= f.text_field :name, { class: "form-control"} %>※20文字以内</td>
+      </tr>
+      <tr>
+        <th><%= f.label "領収書名1:" %></th>
+        <td><%= f.text_field :invoicename1, { class: "form-control"} %>※25文字以内</td>
+      </tr>
+      <tr>
+        <th><%= f.label "領収書名2:" %></th>
+        <td><%= f.text_field :invoicename2, { class: "form-control"} %>※25文字以内</td>
+      </tr>
+      <tr>
+        <th><%= f.label "フリガナ:" %></th>
+        <td><%= f.text_field :phonetic, { class: "form-control"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "郵便番号:" %></th>
+        <td><%= f.text_field :pstalcode, { class: "form-control"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "住所:" %></th>
+        <td><%= f.text_field :address, { class: "form-control"} %>※25文字以内</td>
+      </tr>
+      <tr>
+        <th><%= f.label "住所2:" %></th>
+        <td><%= f.text_field :address2, { class: "form-control"} %>※25文字以内</td>
+      </tr>
+      <tr>
+        <th><%= f.label "電話番号:" %></th>
+        <td><%= f.text_field :tel, { class: "form-control"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "FAX番号:" %></th>
+        <td><%= f.text_field :fax, { class: "form-control"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "メールアドレス:" %></th>
+        <td><%= f.text_field :email, { class: "form-control"} %></td>
+      </tr>
+      </tbody>
+    </table>
+
+  <div class="actions">
+    <%= f.submit :class => "btn edit-btn" %>
+  </div>
+<% end %>

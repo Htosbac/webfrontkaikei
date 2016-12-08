@@ -1,0 +1,49 @@
+<%= form_for(@product) do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= product.errors.count %>件のエラーがあります。</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="tabletype">
+    <tr>
+      <th scope="row"><%= f.label "商品名:" %></th>
+      <td><%= f.text_field :name, { class: "form-control"} %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "商品種類:" %></th>
+      <td><%= f.collection_select :productcategory_id, Productcategory.all, :id, :name, {:prompt => true}, { class: "form-select"} %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "中分類:" %></th>
+      <td><%= f.collection_select :producttype_id, @types, :id, :name, {:prompt => true}, { class: "form-select"} %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= f.label "単価:" %></th>
+      <td><%= f.text_field :price, { class: "form-price"} %>円</td>
+    </tr>
+  </table>
+  <div class="actions">
+    <%= f.submit :class => "btn edit-btn" %>
+  </div>
+
+<% end %>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#product_productcategory_id').change(function(){
+      var category_id = $("#product_productcategory_id").val();
+      $.get("<%= products_category_select_path %>",
+        { category_id: category_id },
+        function(data){ }
+      );
+    });
+  });
+</script>

@@ -1,0 +1,26 @@
+<p id="notice"><% notice %></p>
+
+<h1>商品データ確認</h1>
+
+<table class="tabletype">
+    <tr>
+      <th scope="row">商品種類:</th>
+      <td><%= @product.productcategory.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">商品中分類:</th>
+      <td><%= @product.producttype.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">商品名:</th>
+      <td><%= @product.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">単価:</th>
+      <td><%= number_with_delimiter(@product.price.floor) %>円</td>
+    </tr>
+  </table>
+
+
+<%= link_to '編集画面へ', edit_product_path(@product) %> |
+<%= link_to '商品一覧表示へ', products_path %>

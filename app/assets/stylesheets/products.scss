@@ -1,0 +1,36 @@
+@media screen and (min-width:961px) {
+    .p_category {
+        width: 150px;
+    }
+    .p_type {
+        width: 150px;
+    }
+    .p_name {
+        width: 290px;
+    }
+    .p_price {
+        width: 120px;
+    }
+}
+
+
+@media only screen and (min-width:376px) and (max-width:960px){
+    .p_category {
+        width: 120px;
+    }
+    .p_type {
+        width: 120px;
+    }
+    .p_name {
+        width: 245px;
+    }
+    .p_price {
+        width: 80px;
+    }
+}
+
+.search-category {
+    width: 130px;
+    font-size: 14px;
+    line-height: 1.428571429;
+}

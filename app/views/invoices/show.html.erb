@@ -1,0 +1,115 @@
+<div class="content-print">
+  <h1>請求・領収書</h1>
+   
+
+   <div class="top clearfix">
+    
+    <div id="name" style="font-size: 120%;">
+      <strong style="padding-right: 10px; font-size: 80%">お客様名:</strong>
+      <%= @invoice.customer %>
+      <span style="float: right">様</span>
+    </div>
+       
+    <div id="user">
+     <ul>
+         <li>
+             <%= @invoice.user.invoicename1 %>
+         </li>
+         <li>
+             <%= @invoice.user.invoicename2 %>
+         </li>
+         <li>
+             〒<%= @invoice.user.pstalcode %>
+         </li>
+         <li>
+             <%= @invoice.user.address %>
+         </li>
+         <% if @invoice.user.address2.nil? %>
+         <% else %>
+           <li>
+             <%= @invoice.user.address2 %>
+           </li>
+         <% end %>
+         <li>
+             TEL:<%= @invoice.user.tel %>&nbsp;
+             FAX:<%= @invoice.user.fax %>
+         </li>
+         <li>
+             E-mail:<%= @invoice.user.email %>
+         </li>
+     </ul>
+    </div>
+   </div>
+
+    <table class="meisai_top">
+      <thead>
+        <tr>
+          <th class="m_checkoutday">ﾁｪｯｸｱｳﾄ日</th>
+          <th class="m_stays">宿泊数</th>
+          <th class="m_adults">大人数</th>
+          <th class="m_childs">小人数</th>
+          <th class="m_roomname">部屋名</th>
+          <th class="m_sototal">ご請求金額</th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr>
+            <td class="m_checkoutday" style="text-align:left;"><%= @invoice.checkoutday %></td>
+            <td class="m_stays" style="text-align:right;"><%= @invoice.stays %></td>
+            <td class="m_adults" style="text-align:right;"><%= @invoice.adults %></td>
+            <td class="m_childs" style="text-align:right;"><%= @invoice.childs %></td>
+            <td class="m_roomname" style="text-align:left;"><%= @invoice.room.name %></td>
+            <td class="m_sototal" style="text-align:right;"><%=number_with_delimiter(@invoice.sototal.floor) %></td>
+          </tr>
+      </tbody>
+    </table>
+
+    <table class="meisai_top">
+      <thead>
+        <tr>
+          <th class="m_productdate">日付</th>
+          <th class="m_productname">商品名</th>
+          <th class="m_productprice">単価</th>
+          <th class="m_productnb">数量</th>
+          <th class="m_total">金額</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @billingdetails.order("productcategory_id desc, producttype_id").each do |b| %>
+          <tr>
+            <td class="m_productdate" style="text-align:left;"><%= b.productdate %></td>
+            <td class="m_productname" style="text-align:left;">
+            <% if b.productname.empty? %>
+              <%= b.producttype.name %>
+            <% else %>
+              <%= b.productname %>
+            <% end %>
+            </td>
+            <td class="m_productprice" style="text-align:right;"><%= number_with_delimiter(b.productprice.floor) %></td>
+            <td class="m_productnb" style="text-align:right;"><%= b.productnb %></td>
+            <td class="m_total" style="text-align:right;"><%= number_with_delimiter(b.total.floor) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+<!--
+    <ul id="price">
+        <li style="font-size: 120%;">
+            <span>請求金額:</span>
+            <strong>%=number_with_delimiter(@invoice.sototal.floor) %>円</strong>
+        </li>
+    </ul>
+-->
+
+    <div class="thank">
+        ご利用有難う御座いました。またのお越しをお待ちしております。
+    </div>
+</div>
+
+<div class="link">
+  <%= link_to '編集画面', edit_invoice_path(@invoice) %> |
+  <%= link_to '御会計トップ', invoices_path %>
+</div>

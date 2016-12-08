@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  invoice_id: MyString
+  product_id: 1
+  productcategory_id: 1
+  producttype_id: 1
+  productname: MyString
+  productprice: 9.99
+  productnb: 1
+  total: 9.99
+
+two:
+  invoice_id: MyString
+  product_id: 1
+  productcategory_id: 1
+  producttype_id: 1
+  productname: MyString
+  productprice: 9.99
+  productnb: 1
+  total: 9.99
