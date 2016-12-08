@@ -10,7 +10,7 @@
             <% date = Date.today %>
             <th class="r1"></th>
             <th class="r2">前月<br><span style="font-size:13px;"><%= date.prev_month.strftime("%Y年%m月") %></span></th>
-            <th class="r3">今月<br><span style="font-size:13px;"><%= date.strftime("%Y年%m月") %></span></th>
+            <th class="r3">当月<br><span style="font-size:13px;"><%= date.strftime("%Y年%m月") %></span></th>
             <th class="r4">来月<br><span style="font-size:13px;"><%= date.next_month.strftime("%Y年%m月") %></th>
             <th class="r5">当年<br><span style="font-size:13px;"><%= date.strftime("%Y年") %></th>
             <th class="r6">前年<br><span style="font-size:13px;"><%= date.prev_year.strftime("%Y年") %></th>
@@ -45,7 +45,7 @@
 -->
     <%= column_chart [
       { name: "前月", data: @data3 },
-      { name: "今月", data: @data1 },
+      { name: "当月", data: @data1 },
       { name: "来月", data: @data5 },
       { name: "当年", data: @data2 },
       { name: "前年", data: @data4 }

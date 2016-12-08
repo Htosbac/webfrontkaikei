@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -53,14 +53,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
-gem 'bootstrap-sass'
 
 gem 'devise'
 
 gem 'nested_form_fields'
 
-gem 'ransack'
+gem "ransack"
 
-gem 'chartkick'
-
-gem 'rails_12factor'
+gem "chartkick"
