@@ -5,7 +5,8 @@
         top:0 !IMPORTANT;
         left:0 !IMPORTANT;
         width:172mm !IMPORTANT;
-        height:251mm !IMPORTANT;
+        height:248mm !IMPORTANT;
+        page-break-after: auto;
     }
 
     .navbar {
@@ -15,10 +16,52 @@
     .footer {
         display: none;
     }
+    
+    .thank {
+        clear: right;
+        display: block;
+        font-size: 12px;
+    }
 
     .link {
         display: none;
     }
 
+    .m_checkoutday {
+        width: 113px;
+    }
+    .m_stays {
+        width: 60px;
+    }
+    .m_adults {
+        width: 60px;
+    }
+    .m_childs {
+        width: 60px;
+    }
+    .m_roomname {
+        width: 170px;
+    }
+    .m_sototal {
+        width: 120px;
+    }
+    
+    .m_productdate {
+        width: 80px;
+        font-size: 14px;
+    }
+    .m_productname {
+        width: 195px;
+        font-size: 14px;
+    }
+    .m_productprice {
+        width: 120px;
+    }
+    .m_productnb {
+        width: 80px;
+    }
+    .m_total {
+        width: 120px;
+    }
 
 }

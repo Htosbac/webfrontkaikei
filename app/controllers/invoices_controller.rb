@@ -4,12 +4,16 @@ class InvoicesController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-#    @invoices = current_user.invoices.all
-     # 並び替え
-#    @invoices = current_user.invoices.order(:checkoutday)
     @q = current_user.invoices.search(params[:q])
     @nengetu = params[:q]
     @invoices = @q.result(distinct: true).order(:checkoutday)
+    @billingdetails = current_user.billingdetails.all
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data render_to_string, filename: "請求履歴-#{Time.now.strftime("%Y%m%d")}.csv", type: :csv
+      end
+    end
   end
 
 
@@ -23,15 +27,19 @@ class InvoicesController < ApplicationController
     @invoice.billingdetails.build
     @rooms = current_user.rooms.all
     @types = Producttype.none # 最初は空を設定
-    @products = Product.none
+    @products = Product.none # 最初は空を設定
+    @prices = Product.none # 最初は空を設定
   end
 
 
   def edit
     @rooms = current_user.rooms.all
     @invoice = Invoice.find(params[:id])
+#    @billingdetails = Billingdetail.where(invoice_id: params[:id]).where(user_id: params[:user_id])
+
     @types = Producttype.all
     @products = Product.all
+    @prices = Product.all
   end
 
   def create
@@ -39,6 +47,7 @@ class InvoicesController < ApplicationController
     @rooms = current_user.rooms.all
     @types = Producttype.all
     @products = Product.all
+    @prices = Product.all
 
     respond_to do |format|
       if @invoice.save 
@@ -51,8 +60,6 @@ class InvoicesController < ApplicationController
 
   def update
     @rooms = current_user.rooms.all
-#    @types = Producttype.all
-#    @products = Product.all
 
     #対応するBillingdetailテーブルにデータ削除
     Billingdetail.where(invoice_id: params[:id]).where(user_id: params[:user_id]).destroy_all
@@ -72,7 +79,6 @@ class InvoicesController < ApplicationController
     else
       render :index
     end
-#    respond_to invoices_path
   end
 
   # ajax
@@ -80,16 +86,18 @@ class InvoicesController < ApplicationController
     # pluckで敢えて配列にしています。
     @types = Producttype.where(productcategory_id: params[:category_id]).pluck(:name, :id)
     @idx = params[:idx]
-    # 初期値
-    @types.unshift(["選択してください。", ""])
+    @types.unshift(["選択してください", ""])# 初期値
   end
   def type_select
     # pluckで敢えて配列にしています。
-    @products = Product.where(productcategory_id: params[:category_id]).where(producttype_id: params[:type_id]).pluck(:name, :name)
+    @products = current_user.products.where(productcategory_id: params[:category_id]).where(producttype_id: params[:type_id]).pluck(:name, :id)
+
+    @prices = current_user.products.where(productcategory_id: params[:category_id]).where(producttype_id: params[:type_id]).pluck(:price, :id)
+
     @idx = params[:idx]
-    # 初期値
-    @products.unshift(["選択してください。", ""])
+    @products.unshift(["選択してください", ""])# 初期値
   end
+
 
   private
 

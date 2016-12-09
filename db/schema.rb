@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122083640) do
+ActiveRecord::Schema.define(version: 20161206015559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,29 +19,30 @@ ActiveRecord::Schema.define(version: 20161122083640) do
     t.integer  "product_id"
     t.integer  "productcategory_id"
     t.integer  "producttype_id"
-    t.string   "productname"
-    t.decimal  "productprice",       default: "0.0"
-    t.integer  "productnb",          default: 0
-    t.decimal  "total",              default: "0.0"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.decimal  "productprice",       precision: 10, default: 0
+    t.integer  "productnb",                         default: 0
+    t.decimal  "total",              precision: 10, default: 0
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.integer  "user_id"
     t.integer  "invoice_id"
     t.date     "productdate"
+    t.integer  "dummy"
+    t.string   "productname"
   end
 
   create_table "invoices", force: :cascade do |t|
     t.string   "customer"
     t.string   "checkoutday"
-    t.integer  "stays",       default: 0
-    t.integer  "adults",      default: 0
-    t.integer  "childs",      default: 0
+    t.integer  "stays",                      default: 0
+    t.integer  "adults",                     default: 0
+    t.integer  "childs",                     default: 0
     t.integer  "room_id"
-    t.decimal  "roomfee",     default: "0.0"
-    t.decimal  "sototal",     default: "0.0"
+    t.decimal  "roomfee",     precision: 10, default: 0
+    t.decimal  "sototal",     precision: 10, default: 0
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "productcategories", force: :cascade do |t|
@@ -55,10 +56,10 @@ ActiveRecord::Schema.define(version: 20161122083640) do
     t.integer  "productcategory_id"
     t.integer  "producttype_id"
     t.string   "name"
-    t.decimal  "price",              default: "0.0"
+    t.decimal  "price",              precision: 10, default: 0
     t.integer  "user_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   create_table "producttypes", force: :cascade do |t|
@@ -71,17 +72,17 @@ ActiveRecord::Schema.define(version: 20161122083640) do
 
   create_table "rooms", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "price1",      default: "0.0"
-    t.decimal  "price2",      default: "0.0"
-    t.decimal  "price3",      default: "0.0"
-    t.decimal  "price4",      default: "0.0"
-    t.decimal  "price5",      default: "0.0"
-    t.decimal  "price6",      default: "0.0"
-    t.integer  "peoplenb",    default: 0
+    t.decimal  "price1",      precision: 10, default: 0
+    t.decimal  "price2",      precision: 10, default: 0
+    t.decimal  "price3",      precision: 10, default: 0
+    t.decimal  "price4",      precision: 10, default: 0
+    t.decimal  "price5",      precision: 10, default: 0
+    t.decimal  "price6",      precision: 10, default: 0
+    t.integer  "peoplenb",                   default: 0
     t.integer  "roomtype_id"
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "roomtypes", force: :cascade do |t|
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 20161122083640) do
     t.string   "fax"
     t.string   "invoicename1"
     t.string   "invoicename2"
+    t.string   "address2"
   end
 
 end

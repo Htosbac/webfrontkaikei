@@ -17,4 +17,5 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require nested_form_fields
+//= require chartkick
 //= require_tree .

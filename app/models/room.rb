@@ -2,18 +2,19 @@ class Room < ApplicationRecord
     belongs_to :user
     belongs_to :roomtype
     
-    validates :name, presence:true
-    validates :price1, presence:true
-    validates :price2, presence:true
-    validates :price3, presence:true
-    validates :price4, presence:true
-    validates :price5, presence:true
-    validates :price6, presence:true
-    validates :peoplenb, presence:true
-#    validates :roomtype_id, presence:true
-    
-  def view_name_and_id
-    self.price1.to_s + '(' + self.name + ')'
-  end
+    validate :add_error_sample
+    def add_error_sample
+        if name.blank?
+            errors[:base] << "部屋名を入力して下さい"
+        end
+        
+        if peoplenb.blank?
+            errors[:base] << "宿泊可能人数を入力して下さい"
+        end
+        
+        if roomtype_id.blank?
+            errors[:base] << "部屋タイプを選択して下さい"
+        end
+    end
 
 end

@@ -1,14 +1,11 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
 <h1>登録商品一覧</h1>
-<!--
-
-%= search_form_for @q do |f| %>
-  %= f.label :productcategory_id_cont, '商品種類:' %>
-  %= f.collection_select :productcategory_id_cont, Productcategory.all, :id, :name, {:prompt => true} %>
-  %= f.submit class: 'searchbtn'%>
-% end %>
--->
+<%= search_form_for @q do |f| %>
+  <%= f.label :productcategory_id_eq, '商品種類:' %>
+  <%= f.collection_select :productcategory_id_eq, Productcategory.order(:id), :id, :name, {:prompt => true}, class: 'search-category' %>
+  <%= f.submit class: "searchbtn" %>
+<% end %>
 
 <table class="datalist" style="width:100%;">
   <thead>
@@ -17,7 +14,6 @@
       <th class="p_type">中分類</th>
       <th class="p_name">商品名</th>
       <th class="p_price">単価</th>
-<!--      <th colspan="2"></th>-->
       <th class="edit"></th>
       <th class="destroy"></th>
     </tr>
@@ -39,4 +35,4 @@
 
 <br>
 
-<%= link_to '商品を追加する', new_product_path %>
+<%= link_to '商品を追加する', new_product_path, class: "newbtn" %>
