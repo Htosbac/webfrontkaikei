@@ -1,27 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <h1>登録商品一覧</h1>
+<!--
 
-<table class="datalist">
+%= search_form_for @q do |f| %>
+  %= f.label :productcategory_id_cont, '商品種類:' %>
+  %= f.collection_select :productcategory_id_cont, Productcategory.all, :id, :name, {:prompt => true} %>
+  %= f.submit class: 'searchbtn'%>
+% end %>
+-->
+
+<table class="datalist" style="width:100%;">
   <thead>
     <tr>
-      <th>商品種類</th>
-      <th>中分類</th>
-      <th>商品名</th>
-      <th>単価</th>
-      <th colspan="3"></th>
+      <th class="p_category">商品種類</th>
+      <th class="p_type">中分類</th>
+      <th class="p_name">商品名</th>
+      <th class="p_price">単価</th>
+<!--      <th colspan="2"></th>-->
+      <th class="edit"></th>
+      <th class="destroy"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td style="width:15%;"><%= product.productcategory.name %></td>
-        <td style="width:15%;"><%= product.producttype.name %></td>
-        <td style="text-align:left; width:41%;"><%= product.name %></td>
-        <td style="text-align:right; width:15%;"><%= number_with_delimiter(product.price.floor) %></td>
-        <td style="text-align:center; width:7%;"><%= link_to '編集', edit_product_path(product) %></td>
-        <td style="text-align:center; width:7%;"><%= link_to '削除', product, method: :delete, data: { confirm: '削除してもよろしいですか?' } %></td>
+        <td class="p_category"><%= product.productcategory.name %></td>
+        <td class="p_type"><%= product.producttype.name %></td>
+        <td class="p_name" style="text-align:left;"><%= product.name %></td>
+        <td class="p_price" style="text-align:right;"><%= number_with_delimiter(product.price.floor) %></td>
+        <td class="edit"><%= link_to '編集', edit_product_path(product) %></td>
+        <td class="destroy"><%= link_to '削除', product, method: :delete, data: { confirm: '削除してもよろしいですか?' } %></td>
       </tr>
     <% end %>
   </tbody>

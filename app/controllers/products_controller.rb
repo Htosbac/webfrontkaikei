@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
     @products = current_user.products.all
     # 並び替え
     @products = current_user.products.order(:productcategory_id, :producttype_id)
+#    @q = current_user.products.search(params[:q])
+#    @products = @q.result(distinct: true).order(:productcategory_id, :producttype_id)
   end
 
   def show

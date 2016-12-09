@@ -17,7 +17,7 @@
               <%= f.text_field :customer, { class: "form-control"} %>
           </li>
           <li><span><%= f.label "チェックアウト日:" %></span>
-              <%= f.text_field :checkoutday, { class: "form-date datepicker"} %>
+              <%= f.text_field :checkoutday, { class: "form-date", id: "datepicker" }  %>
           </li>
           <li><span><%= f.label "宿泊数:" %></span>
               <%= f.number_field :stays, { class: "form-number"} %>
@@ -42,43 +42,43 @@
     <div class="addrow">新しい行を追加：
        <%= f.add_nested_fields_link :billingdetails, '追加', class: 'addbtn', role: 'button' %>
     </div>
-    <table id="tbl" class="tuika">
-        <thead>
+    <table id="tbl">
+        <thead style="width:900px;">
             <tr>
-                <th>日付</th>
-                <th>商品種類</th>
-                <th>中分類</th>
-                <th>商品名</th>
-                <th>単価</th>
-                <th>数量</th>
-                <th>金額</th>
-                <th></th>
+                <th class="b_day">日付</th>
+                <th class="b_Pcategory">商品種類</th>
+                <th class="b_Ptype">中分類</th>
+                <th class="b_Pname">商品名</th>
+                <th class="b_price">単価</th>
+                <th class="b_nb">数量</th>
+                <th class="b_sumprice">金額</th>
+                <th class="b_del"></th>
             </tr>
         </thead>
         <tbody>
              <%= f.nested_fields_for :billingdetails, wrapper_tag: :tr do |b| %>
-                <td style="text-align:center; width:15%">
+                <td class="b_day" style="text-align:center;">
                   <%= b.date_field :productdate, class: 'form-date2' %>
                 </td>
-                <td style="text-align:center; width:15%">
+                <td class="b_Pcategory" style="text-align:center;">
                   <%= b.collection_select :productcategory_id, Productcategory.all, :id, :name, {:prompt => true}, class: 'form-select2', onchange: 'selectcategory(this)' %>
                 </td>
-                <td style="text-align:center; width:15%">
+                <td class="b_Ptype" style="text-align:center;">
                   <%= b.collection_select :producttype_id, @types, :id, :name, {:prompt => true}, class: 'form-select2', onchange: 'selecttype(this)' %>
                 </td>
-                <td style="text-align:center; width:15%">
+                <td class="b_Pname" style="text-align:center;">
                   <%= b.collection_select :productname, @products, :name, :name, {:prompt => true}, class: 'form-select2' %>
                 </td>
-                <td style="text-align:center; width:10%">
+                <td class="b_price" style="text-align:center;">
                   <%= b.text_field :productprice, class: 'form-price2 product_price', onchange: 'totalchange(this)' %>
                 </td>
-                <td style="text-align:center; width:8%">
+                <td class="b_nb" style="text-align:center;">
                   <%= b.number_field :productnb, class: 'form-number2 product_nb', onchange: 'totalchange(this)' %>
                 </td>
-                <td style="text-align:center; width: 17%">
+                <td class="b_sumprice" style="text-align:center;">
                   <%= b.text_field :total, class: 'form-price2 product_total' %>
                 </td>
-                <td style="text-align:center; width: 5%">
+                <td class="b_del" style="text-align:center;">
                   <%= b.remove_nested_fields_link '×', class: 'delbtn', role: 'button' %>
                 </td>
                 <%= b.hidden_field :user_id, :value => params[:user_id] %>
@@ -109,10 +109,14 @@
 <script language="JavaScript">
   //カレンダー表示
   $(document).ready(function(){
-    $(".datepicker").datepicker({
+    $("#datepicker").datepicker({
       dateFormat: 'yy/mm/dd (D)'
     });
   });
+    
+//  $(function() {
+//    $("#datepicker").datepicker();
+//  });
 
 
   //単価×数量の自動計算

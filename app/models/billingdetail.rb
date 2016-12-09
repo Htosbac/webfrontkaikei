@@ -1,5 +1,6 @@
 class Billingdetail < ActiveRecord::Base
     belongs_to :user
+    belongs_to :producttype
 #    belongs_to :invoice
 #    has_one :user, through: :invoice
 

@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'jquery-ui-rails','~>4.2.1'
+gem 'jquery-ui-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 gem 'jquery-turbolinks'
@@ -57,3 +57,5 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'devise'
 
 gem 'nested_form_fields'
+
+gem "ransack"

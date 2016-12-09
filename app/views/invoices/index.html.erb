@@ -1,34 +1,58 @@
 <p id="notice"><% notice %></p>
 
 <h1>領収書発行履歴</h1>
+<%= search_form_for @q do |f| %>
+ <span id="displaymm">
+      <!--  初期データは今月  -->
+      <% if @nengetu.nil? %>
+        <%= Date.today.strftime("%Y年%m月分") %>
+        <% @invoices = Invoice.where("checkoutday like '%" + Date.today.strftime("%Y/%m") + "%'").where(user_id: params[:user_id]) %>
+      <% else %>
+        <% date = params[:q][:checkoutday_cont] %>
+        <!--  検索年月が空白の場合、すべてのデータが表示  -->
+        <% if date.empty? %>
+          <%= "全データ分　" %>
+        <% else %>
+          <%= date.slice!(0,4) + "年" + date.slice!(1,2) + "月分" %>
+        <% end %>
+      <% end %>
+ </span>
+ <span id="searchmm">
+      <%= f.label :checkoutday_cont, "検索年月:" %>
+      <%= f.search_field :checkoutday_cont , class: 'search-date', maxlength: 7, value: Date.today.strftime("%Y/%m") %>
+      <%= f.submit class: 'searchbtn'%>
+ </span>
+<% end %>
 
-<table class="datalist">
+<table class="datalist" style="width:100%;">
   <thead>
     <tr>
-      <th>お客様名</th>
-      <th>ﾁｪｯｸｱｳﾄ日</th>
-      <th>泊数</th>
-      <th>大人</th>
-      <th>小人</th>
-      <th>部屋名</th>
-      <th>総合計</th>
-      <th colspan="3"></th>
+      <th class="i_customer">お客様名</th>
+      <th class="i_checkoutday">ﾁｪｯｸｱｳﾄ日</th>
+      <th class="i_stays">泊数</th>
+      <th class="i_adults">大人</th>
+      <th class="i_childs">小人</th>
+      <th class="i_roomname">部屋名</th>
+      <th class="i_sototal">総合計</th>
+      <th class="i_print"></th>
+      <th class="i_edit"></th>
+      <th class="i_destroy"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td style="text-align:left; width:18%;"><%= invoice.customer %></td>
-        <td style="text-align:left; width:16%;"><%= invoice.checkoutday %></td>
-        <td style="text-align:right; width:7%;"><%= invoice.stays %></td>
-        <td style="text-align:right; width:7%;"><%= invoice.adults %></td>
-        <td style="text-align:right; width:7%;"><%= invoice.childs %></td>
-        <td style="text-align:left;width:14%;"><%= invoice.room.name %></td>
-        <td style="text-align:right; width:10%;"><%= number_with_delimiter(invoice.sototal.floor) %></td>
-        <td style="text-align:center; width:7%;"><%= link_to '印刷', invoice %></td>
-        <td style="text-align:center; width:7%;"><%= link_to '編集', edit_invoice_path(invoice) %></td>
-        <td style="text-align:center; width:7%;"><%= link_to '削除', invoice, method: :delete, data: { confirm: '削除してもよろしいですか？' }  %></td>
+        <td class="i_customer" style="text-align:left;"><%= invoice.customer %></td>
+        <td class="i_checkoutday" style="text-align:left;"><%= invoice.checkoutday %></td>
+        <td class="i_stays" style="text-align:right;"><%= invoice.stays %></td>
+        <td class="i_adults" style="text-align:right;"><%= invoice.adults %></td>
+        <td class="i_childs" style="text-align:right; "><%= invoice.childs %></td>
+        <td class="i_roomname" style="text-align:left;"><%= invoice.room.name %></td>
+        <td class="i_sototal" style="text-align:right;"><%= number_with_delimiter(invoice.sototal.floor) %></td>
+        <td class="i_print"><%= link_to '印刷', invoice %></td>
+        <td class="i_edit"><%= link_to '編集', edit_invoice_path(invoice) %></td>
+        <td class="i_destroy"><%= link_to '削除', invoice, method: :delete, data: { confirm: '削除してもよろしいですか？' }  %></td
       </tr>
     <% end %>
   </tbody>

@@ -40,21 +40,21 @@
     <table class="meisai_top">
       <thead>
         <tr>
-          <th>ﾁｪｯｸｱｳﾄ日</th>
-          <th>宿泊数</th>
-          <th>大人数</th>
-          <th>小人数</th>
-          <th>部屋名</th>
+          <th class="m_checkoutday">ﾁｪｯｸｱｳﾄ日</th>
+          <th class="m_stays">宿泊数</th>
+          <th class="m_adults">大人数</th>
+          <th class="m_childs">小人数</th>
+          <th class="m_roomname">部屋名</th>
         </tr>
       </thead>
       
       <tbody>
           <tr>
-            <td style="text-align:left; width:18%;"><%= @invoice.checkoutday %></td>
-            <td style="text-align:right; width:15%;"><%= @invoice.stays %></td>
-            <td style="text-align:right; width:15%;"><%= @invoice.adults %></td>
-            <td style="text-align:right; width:15%;"><%= @invoice.childs %></td>
-            <td style="text-align:left; width:37%;"><%= @invoice.room.name %></td>
+            <td class="m_checkoutday" style="text-align:left;"><%= @invoice.checkoutday %></td>
+            <td class="m_stays" style="text-align:right;"><%= @invoice.stays %></td>
+            <td class="m_adults" style="text-align:right;"><%= @invoice.adults %></td>
+            <td class="m_childs" style="text-align:right;"><%= @invoice.childs %></td>
+            <td class="m_roomname" style="text-align:left;"><%= @invoice.room.name %></td>
           </tr>
       </tbody>
     </table>
@@ -62,22 +62,28 @@
     <table class="meisai_top">
       <thead>
         <tr>
-          <th>日付</th>
-          <th>商品名</th>
-          <th>単価</th>
-          <th>数量</th>
-          <th>金額</th>
+          <th class="m_productdate">日付</th>
+          <th class="m_productname">商品名</th>
+          <th class="m_productprice">単価</th>
+          <th class="m_productnb">数量</th>
+          <th class="m_total">金額</th>
         </tr>
       </thead>
 
       <tbody>
         <% @billingdetails.each do |b| %>
           <tr>
-            <td style="text-align:left; width:18%;"><%= b.productdate %></td>
-            <td style="text-align:left; width:37%;"><%= b.productname %></td>
-            <td style="text-align:right; width:15%;"><%= number_with_delimiter(b.productprice.floor) %></td>
-            <td style="text-align:right; width:15%;"><%= b.productnb %></td>
-            <td style="text-align:right; width:15%;"><%= number_with_delimiter(b.total.floor) %></td>
+            <td class="m_productdate" style="text-align:left;"><%= b.productdate %></td>
+            <td class="m_productname" style="text-align:left;">
+            <% if b.productname.empty? %>
+              <%= b.producttype.name %>
+            <% else %>
+              <%= b.productname %>
+            <% end %>
+            </td>
+            <td class="m_productprice" style="text-align:right;"><%= number_with_delimiter(b.productprice.floor) %></td>
+            <td class="m_productnb" style="text-align:right;"><%= b.productnb %></td>
+            <td class="m_total" style="text-align:right;"><%= number_with_delimiter(b.total.floor) %></td>
           </tr>
         <% end %>
       </tbody>

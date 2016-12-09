@@ -2,38 +2,37 @@
 
 <h1>登録部屋一覧</h1>
 
-<table class="datalist">
+<table class="datalist" style="width:100%;">
   <thead>
     <tr>
-      <th>部屋名</th>
-      <th>Ａ</th>
-      <th>Ｂ</th>
-      <th>Ｃ</th>
-      <th>Ｄ</th>
-      <th>Ｅ</th>
-      <th>Ｆ</th>
-      <th>人数</th>
-      <th>タイプ</th>
-<!--      <th>User</th>-->
-      <th colspan="3"></th>
+      <th class="r_name">部屋名</th>
+      <th class="r_A">Ａ</th>
+      <th class="r_B">Ｂ</th>
+      <th class="r_C">Ｃ</th>
+      <th class="r_D">Ｄ</th>
+      <th class="r_E">Ｅ</th>
+      <th class="r_F">Ｆ</th>
+      <th class="r_nb">人数</th>
+      <th class="r_type">タイプ</th>
+      <th class="edit"></th>
+      <th class="destroy"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @rooms.each do |room| %>
       <tr>
-        <td style="text-align:left; width:21%;"><%= room.name %></td>
-        <td style="text-align:right; width:8%;"><%= number_with_delimiter(room.price1.floor) %></td>
-        <td style="text-align:right; width:8%;"><%= number_with_delimiter(room.price2.floor) %></td>
-        <td style="text-align:right; width:8%;"><%= number_with_delimiter(room.price3.floor) %></td>
-        <td style="text-align:right; width:8%;"><%= number_with_delimiter(room.price4.floor) %></td>
-        <td style="text-align:right; width:8%;"><%= number_with_delimiter(room.price5.floor) %></td>
-        <td style="text-align:right; width:8%;"><%= number_with_delimiter(room.price6.floor) %></td>
-        <td style="text-align:right; width:7%;"><%= room.peoplenb %></td>
-        <td style=" width:10%;"><%= room.roomtype.name %></td>
-<!--        <td>%= link_to 'Show', room %></td>-->
-        <td style="text-align:center; width:7%;"><%= link_to '編集', edit_room_path(room) %></td>
-        <td style="text-align:center; width:7%;"><%= link_to '削除', room, method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+        <td class="r_name" style="text-align:left;"><%= room.name %></td>
+        <td class="r_A" style="text-align:right;"><%= number_with_delimiter(room.price1.floor) %></td>
+        <td class="r_B" style="text-align:right;"><%= number_with_delimiter(room.price2.floor) %></td>
+        <td class="r_C" style="text-align:right"><%= number_with_delimiter(room.price3.floor) %></td>
+        <td class="r_D" style="text-align:right;"><%= number_with_delimiter(room.price4.floor) %></td>
+        <td class="r_E" style="text-align:right;"><%= number_with_delimiter(room.price5.floor) %></td>
+        <td  class="r_F"style="text-align:right;"><%= number_with_delimiter(room.price6.floor) %></td>
+        <td class="r_nb" style="text-align:right;"><%= room.peoplenb %></td>
+        <td class="r_type"><%= room.roomtype.name %></td>
+        <td class="edit"><%= link_to '編集', edit_room_path(room) %></td>
+        <td class="destroy"><%= link_to '削除', room, method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
       </tr>
     <% end %>
   </tbody>

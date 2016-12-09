@@ -4,10 +4,14 @@ class InvoicesController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @invoices = current_user.invoices.all
+#    @invoices = current_user.invoices.all
      # 並び替え
-    @invoices = current_user.invoices.order(:checkoutday)
+#    @invoices = current_user.invoices.order(:checkoutday)
+    @q = current_user.invoices.search(params[:q])
+    @nengetu = params[:q]
+    @invoices = @q.result(distinct: true).order(:checkoutday)
   end
+
 
   def show
       @billingdetails = Billingdetail.where(invoice_id: params[:id]).where(user_id: params[:user_id])

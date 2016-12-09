@@ -23,8 +23,8 @@ a:hover {
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+//  padding-left: 15px;
+//  padding-right: 15px;
   clear: both;
 }
 
@@ -261,19 +261,32 @@ input, textarea, select {
 
 
 /* テーブル================================ */
-table.datalist {
+.datalist {
     border-collapse: collapse;
     text-align: center;
     line-height: 1.5;
     border-left: 1px solid #ccc;
-    width: 95%;
-//    height: 300px;
-//    border: 2px solid #000;
-//    overflow: visible;
 }
 
-table.datalist thead th {
-//    padding: 10px;
+.datalist, .datalist thead, .datalist tbody {
+    display: block;
+}
+
+.datalist tbody {
+    overflow-y: scroll;
+    height: 300px;//テーブルの高さ
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+@media only screen and (min-width:376px) and (max-width:960px) {
+    .datalist tbody {
+         height: 500px;//テーブルの高さ
+    }
+}
+
+.datalist thead th {
+    padding: 5px;
     font-weight: bold;
     border-top: 1px solid #ccc;
     border-right: 1px solid #ccc;
@@ -281,8 +294,8 @@ table.datalist thead th {
     background: #dcdcd1;
 }
 
-table.datalist tbody th {
-//    padding: 10px;
+.datalist tbody th {
+    padding: 5px;
     font-weight: bold;
     vertical-align: top;
     border-right: 1px solid #ccc;
@@ -290,9 +303,15 @@ table.datalist tbody th {
     background: #ececec;
 }
 
-table.datalist td {
-//    padding: 10px;
+
+.datalist td {
+    padding: 5px;
     vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+    background: white;
+}
+
+.edit, .destroy {
+    width: 50px;
 }
