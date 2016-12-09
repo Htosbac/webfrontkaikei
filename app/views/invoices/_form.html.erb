@@ -1,7 +1,7 @@
 <%= form_for(invoice) do |f| %>
   <% if invoice.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
-      <h2><%= invoice.errors.count %>件のエラ－</h2>
+      <h2><%= invoice.errors.count %>件のエラー:</h2>
 
       <ul>
       <% invoice.errors.full_messages.each do |message| %>
@@ -12,47 +12,23 @@
   <% end %>
 
   <div class="form-left">
-      <table class="tabletype2">
-        <tr>
-          <th scope="row"><%= f.label "お客様名:" %></th>
-          <td><%= f.text_field :customer, { class: "form-control2"} %></td>
-        </tr>
-        <tr>
-          <th scope="row"><%= f.label "チェックアウト日:" %></th>
-          <td><%= f.text_field :checkoutday, { class: "form-date", id: "datepicker" } %></td>
-        </tr>
-        <tr>
-          <th scope="row"><%= f.label "宿泊数:" %></th>
-          <td><%= f.number_field :stays, { class: "form-number3"} %>泊</td>
-        </tr>
-        <tr>
-          <th scope="row"><%= f.label "人数－－－大人:" %></th>
-          <td><%= f.number_field :adults, { class: "form-number3"} %>人</td>
-        </tr>
-        <tr>
-          <th scope="row"><%= f.label "子供:" %></th>
-          <td><%= f.number_field :childs, { class: "form-number3"} %>人</td>
-        </tr>
-      </table>
-<!--
       <ul>
-          <li><span>%= f.label "お客様名:" %></span>
-              %= f.text_field :customer, { class: "form-control"} %>
+          <li><span><%= f.label "お客様名:" %></span>
+              <%= f.text_field :customer, { class: "form-control"} %>
           </li>
-          <li><span>%= f.label "チェックアウト日:" %></span>
-              %= f.text_field :checkoutday, { class: "form-date", id: "datepicker" }  %>
+          <li><span><%= f.label "チェックアウト日:" %></span>
+              <%= f.text_field :checkoutday, { class: "form-date", id: "datepicker" }  %>
           </li>
-          <li><span>%= f.label "宿泊数:" %></span>
-              %= f.number_field :stays, { class: "form-number"} %>
+          <li><span><%= f.label "宿泊数:" %></span>
+              <%= f.number_field :stays, { class: "form-number"} %>
           </li>
-          <li><span>%= f.label "人数－－－大人:" %></span>
-              %= f.number_field :adults, { class: "form-number"} %>
+          <li><span><%= f.label "人数－－－大人:" %></span>
+              <%= f.number_field :adults, { class: "form-number"} %>
           </li>
-          <li><span>%= f.label "子供:" %></span>
-              %= f.number_field :childs, { class: "form-number"} %>
+          <li><span><%= f.label "子供:" %></span>
+              <%= f.number_field :childs, { class: "form-number"} %>
           </li>
       </ul>
--->
   </div>
 
   <div class="form-right">
@@ -85,7 +61,7 @@
                   <%= b.date_field :productdate, class: 'form-date2' %>
                 </td>
                 <td class="b_Pcategory" style="text-align:center;">
-                  <%= b.collection_select :productcategory_id, Productcategory.all.order(:id), :id, :name, {:prompt => true}, class: 'form-select2', onchange: 'selectcategory(this)' %>
+                  <%= b.collection_select :productcategory_id, Productcategory.all, :id, :name, {:prompt => true}, class: 'form-select2', onchange: 'selectcategory(this)' %>
                 </td>
                 <td class="b_Ptype" style="text-align:center;">
                   <%= b.collection_select :producttype_id, @types, :id, :name, {:prompt => true}, class: 'form-select2', onchange: 'selecttype(this)' %>
@@ -114,6 +90,11 @@
 
   <div class="form-left">
       <ul>
+<!--
+        <li><span>%= f.label "宿泊料金:" %></span>
+        %= f.text_field :roomfee, { class: "form-price"} %>円</li>
+        </li>
+-->
         <li><span><%= f.label "総合計:" %></span>
         <%= f.text_field :sototal, { class: "sototal"} %>円</li>
       </ul>
@@ -132,6 +113,10 @@
       dateFormat: 'yy/mm/dd (D)'
     });
   });
+    
+//  $(function() {
+//    $("#datepicker").datepicker();
+//  });
 
 
   //単価×数量の自動計算
@@ -141,7 +126,6 @@
     var tr = $("#tbl tbody tr");
     var cells = tr.eq(idx);
     var len = tr.length - 1;
-    
 
     var price = $("#invoice_billingdetails_attributes_" + idx + "_productprice").val();
     var nb = $("#invoice_billingdetails_attributes_" + idx + "_productnb").val();
@@ -150,16 +134,12 @@
     //金額表示
     $("#invoice_billingdetails_attributes_" + idx + "_total").val(total);
 
-    var category_id = $("#invoice_billingdetails_attributes_" + idx + "_productcategory_id").val();
     var sum = 0;
     for (var i = 0; i <= len; i++){
-
-        //入金の場合は合計にいれない
-        if (category_id == 1) return;
-
         price = $("#invoice_billingdetails_attributes_" + i + "_productprice").val();
         nb = $("#invoice_billingdetails_attributes_" + i + "_productnb").val();
         total = price * nb;
+
         sum = sum + total;
     }
       //総合計表示

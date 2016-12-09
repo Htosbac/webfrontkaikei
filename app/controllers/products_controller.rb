@@ -4,8 +4,11 @@ class ProductsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @q = current_user.products.search(params[:q])
-    @products = @q.result(distinct: true).order(:productcategory_id, :producttype_id)
+    @products = current_user.products.all
+    # 並び替え
+    @products = current_user.products.order(:productcategory_id, :producttype_id)
+#    @q = current_user.products.search(params[:q])
+#    @products = @q.result(distinct: true).order(:productcategory_id, :producttype_id)
   end
 
   def show
@@ -24,7 +27,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.build(product_params)
-    @types = Producttype.where(productcategory_id: @product.productcategory_id)
+#    @types = Producttype.all
 
     respond_to do |format|
       if @product.save

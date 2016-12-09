@@ -4,6 +4,9 @@ class InvoicesController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
+#    @invoices = current_user.invoices.all
+     # 並び替え
+#    @invoices = current_user.invoices.order(:checkoutday)
     @q = current_user.invoices.search(params[:q])
     @nengetu = params[:q]
     @invoices = @q.result(distinct: true).order(:checkoutday)
@@ -20,18 +23,13 @@ class InvoicesController < ApplicationController
     @invoice.billingdetails.build
     @rooms = current_user.rooms.all
     @types = Producttype.none # 最初は空を設定
-    @products = Product.none # 最初は空を設定
+    @products = Product.none
   end
 
 
   def edit
     @rooms = current_user.rooms.all
     @invoice = Invoice.find(params[:id])
-    @billingdetails = Billingdetail.where(invoice_id: params[:id]).where(user_id: params[:user_id])
-    
-#    @billingdetails.each do |b|
-#        @types = Producttype.where(productcategory_id: b.productcategory_id)
-#    end
     @types = Producttype.all
     @products = Product.all
   end
@@ -53,6 +51,8 @@ class InvoicesController < ApplicationController
 
   def update
     @rooms = current_user.rooms.all
+#    @types = Producttype.all
+#    @products = Product.all
 
     #対応するBillingdetailテーブルにデータ削除
     Billingdetail.where(invoice_id: params[:id]).where(user_id: params[:user_id]).destroy_all
@@ -81,14 +81,14 @@ class InvoicesController < ApplicationController
     @types = Producttype.where(productcategory_id: params[:category_id]).pluck(:name, :id)
     @idx = params[:idx]
     # 初期値
-    @types.unshift(["選択してください", ""])
+    @types.unshift(["選択してください。", ""])
   end
   def type_select
     # pluckで敢えて配列にしています。
     @products = Product.where(productcategory_id: params[:category_id]).where(producttype_id: params[:type_id]).pluck(:name, :name)
     @idx = params[:idx]
     # 初期値
-    @products.unshift(["選択してください", ""])
+    @products.unshift(["選択してください。", ""])
   end
 
   private
