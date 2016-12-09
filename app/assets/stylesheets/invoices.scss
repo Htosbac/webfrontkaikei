@@ -184,6 +184,12 @@
     text-align: right;
 }
 
+.form-control2 {
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.428571429;
+}
+
 .form-date2 {
     font-size: 16px;
     line-height: 1.428571429;
@@ -196,6 +202,14 @@
     font-size: 16px;
     line-height: 1.428571429;
     width: 95%;
+    text-align: right;
+    margin: 0px auto;
+}
+
+.form-number3 {
+    font-size: 16px;
+    line-height: 1.428571429;
+    width: 30%;
     text-align: right;
     margin: 0px auto;
 }
@@ -247,24 +261,6 @@
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid #1f89e2;
-}
-
-.searchbtn {
-    position: relative;
-    background-color: dimgrey;
-    border-radius: 4px;
-    border-color: black;
-    color: #fff;
-    font-weight: bold;
-    -webkit-transition: none;
-    transition: none;
-    box-shadow: 0 2px 0 #333;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-}
-
-.searchbtn:active {
-    top: 3px;
-    box-shadow: none;
 }
 
 //====show.html.erb================================================================//
@@ -504,8 +500,6 @@
 }
 
 #displaymm {
-    //    margin-left: 10px;
-    //    padding: 5px;
     font-size: 20px;
     font-weight: bold;
     position: relative;

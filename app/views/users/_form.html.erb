@@ -11,37 +11,83 @@
     </div>
   <% end %>
 
+    <table class="usertable">
+       <tbody>
+      <tr>
+        <th><%= f.label "ユーザ名:" %></th>
+        <td><%= f.text_field :name, { class: "form-control"} %>※20文字以内</td>
+      </tr>
+      <tr>
+        <th><%= f.label "領収書名1:" %></th>
+        <td><%= f.text_field :invoicename1, { class: "form-control"} %>※25文字以内</td>
+      </tr>
+      <tr>
+        <th><%= f.label "領収書名2:" %></th>
+        <td><%= f.text_field :invoicename2, { class: "form-control"} %>※25文字以内</td>
+      </tr>
+      <tr>
+        <th><%= f.label "フリガナ:" %></th>
+        <td><%= f.text_field :phonetic, { class: "form-control"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "郵便番号:" %></th>
+        <td><%= f.text_field :pstalcode, { class: "form-control"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "住所:" %></th>
+        <td><%= f.text_field :address, { class: "form-control"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "電話番号:" %></th>
+        <td><%= f.text_field :tel, { class: "form-control"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "FAX番号:" %></th>
+        <td><%= f.text_field :fax, { class: "form-control"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "メールアドレス:" %></th>
+        <td><%= f.text_field :email, { class: "form-control"} %></td>
+      </tr>
+      </tbody>
+    </table>
+<!--
     <div class="field">
       <ul>
-         <li><span><%= f.label "ユーザ名:" %></span>
-          <%= f.text_field :name, { class: "form-control"} %>※20文字以内
+         <li><span>%= f.label "ユーザ名:" %></span>
+          %= f.text_field :name, { class: "form-control"} %>※20文字以内
           </li>
-          <li><span><%= f.label "領収書名1:" %></span>
-          <%= f.text_field :invoicename1, { class: "form-control"} %>※25文字以内
+-->
+<!--
+          <li><span>%= f.label "領収書名1:" %></span>
+          %= f.text_field :invoicename1, { class: "form-control"} %>※25文字以内
           </li>
-          <li><span><%= f.label "領収書名2:" %></span>
-          <%= f.text_field :invoicename2, { class: "form-control"} %>※25文字以内
+          <li><span>%= f.label "領収書名2:" %></span>
+          %= f.text_field :invoicename2, { class: "form-control"} %>※25文字以内
           </li>
-          <li><span><%= f.label "フリガナ:" %></span>
-          <%= f.text_field :phonetic, { class: "form-control"} %>
+          <li><span>%= f.label "フリガナ:" %></span>
+          %= f.text_field :phonetic, { class: "form-control"} %>
           </li>
-          <li><span><%= f.label "郵便番号:" %></span>
-          <%= f.text_field :pstalcode, { class: "form-control"} %>
+          <li><span>%= f.label "郵便番号:" %></span>
+          %= f.text_field :pstalcode, { class: "form-control"} %>
           </li>
-          <li><span><%= f.label "住所:" %></span>
-          <%= f.text_field :address, { class: "form-control"} %>
+          <li><span>%= f.label "住所:" %></span>
+          %= f.text_field :address, { class: "form-control"} %>
           </li>
-          <li><span><%= f.label "電話番号:" %></span>
-          <%= f.text_field :tel, { class: "form-control"} %>
+          <li><span>%= f.label "電話番号:" %></span>
+          %= f.text_field :tel, { class: "form-control"} %>
           </li>
-          <li><span><%= f.label "FAX番号:" %></span>
-          <%= f.text_field :fax, { class: "form-control"} %>
+          <li><span>%= f.label "FAX番号:" %></span>
+          %= f.text_field :fax, { class: "form-control"} %>
           </li>
-          <li><span><%= f.label "メールアドレス:" %></span>
-          <%= f.text_field :email, { class: "form-control"} %>
+          <li><span>%= f.label "メールアドレス:" %></span>
+          %= f.text_field :email, { class: "form-control"} %>
           </li>
+-->
+<!--
       </ul>
   </div>
+-->
 
   <div class="actions">
     <%= f.submit :class => "btn edit-btn" %>

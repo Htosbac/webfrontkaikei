@@ -1,5 +1,83 @@
 <% if user_signed_in? %>
-<h1><%= current_user.name %> さん、こんにちは！</h1>
+    <h1><%= current_user.name %> さん、こんにちは！</h1>
+    <% wdays = ["日", "月", "火", "水", "木", "金", "土"] %>
+    <h2><%= Date.today.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[Date.today.wday]})") %></h2>
+
+
+<table class="brwsr1">
+    <tbody>
+        <tr>
+            <% date = Date.today %>
+            <th class="r1"></th>
+            <th class="r2">前月<br><span style="font-size:13px;"><%= date.prev_month.strftime("%Y年%m月") %></span></th>
+            <th class="r3">当月<br><span style="font-size:13px;"><%= date.strftime("%Y年%m月") %></span></th>
+            <th class="r4">来月<br><span style="font-size:13px;"><%= date.next_month.strftime("%Y年%m月") %></th>
+            <th class="r5">当年<br><span style="font-size:13px;"><%= date.strftime("%Y年") %></th>
+            <th class="r6">前年<br><span style="font-size:13px;"><%= date.prev_year.strftime("%Y年") %></th>
+        </tr>
+        <tr>
+            <th class="r1">売上</th>
+            <td class="r2"><%= number_with_delimiter(@invoices3.sum(:sototal).floor) %>円</td>
+            <td class="r3"><%= number_with_delimiter(@invoices1.sum(:sototal).floor) %>円</td>
+            <td class="r4"><%= number_with_delimiter(@invoices5.sum(:sototal).floor) %>円</td>
+            <td class="r5"><%= number_with_delimiter(@invoices2.sum(:sototal).floor) %>円</td>
+            <td class="r6"><%= number_with_delimiter(@in4sum.floor) %>円</td>
+        </tr>
+        <tr>
+            <th class="r1">件数</th>
+            <td class="r2"><%= @invoices3.count %>件</td>
+            <td class="r3"><%= @invoices1.count %>件</td>
+            <td class="r4"><%= @invoices5.count %>件</td>
+            <td class="r5"><%= @invoices2.count %>件</td>
+            <td class="r6"><%= @in4count %>件</td></td>
+        </tr>
+    </tbody>
+</table>
+
+<!--
+    %= column_chart [
+      { name: "前月", data: @data3 },
+      { name: "今月", data: @data1 },
+      { name: "来月", data: @data5 },
+      { name: "当年", data: @data2 },
+      { name: "前年", data: @data4 }
+    ], width: "700px", height: "400px", colors: ["#3d93b6", "#99ddcc", "#6dce76", "#d9d28c", "#dfcd9e"], id: "graph" %>
+-->
+<!--
+    %= column_chart [
+      { name: "前月", data: @data3 },
+      { name: "当月", data: @data1 },
+      { name: "来月", data: @data5 },
+      { name: "当年", data: @data2 },
+      { name: "前年", data: @data4 }
+    ], width: "800px", height: "400px", colors: ["#3FB8AF", "#7FC7AF", "#DAD8A7", "#FF9E9D", "#FEC6B7"], id: "graph" %>
+
+<div id="pies" class="clearfix">
+   <div id="graphpie">
+   <span id="disyear">当年の商品別売上数</span>
+    %= pie_chart [
+      [ "宿泊", @plan ],
+      [ "食事", @food ],
+      [ "飲物", @drink ],
+      [ "御土産", @gift ],
+      [ "その他", @sonota ]
+     ], library: {backgroundColor: "#FF9E9D"} %>
+    </div>
+    <div id="graphpie2">
+    <span id="disyear">前年の商品別売上数</span>
+    %= pie_chart [
+      [ "宿泊", @z_plan ],
+      [ "食事", @z_food ],
+      [ "飲物", @z_drink ],
+      [ "御土産", @z_gift ],
+      [ "その他", @z_sonota ]
+     ], library: {backgroundColor: "#FEC6B7"} %>
+     </div>
+</div>
+-->
+
+    <div style="clear: both"></div>
+
 <% else %>
-<h1>Webフロント会計システム</h1>
+    <h1>Webフロント会計システム</h1>
 <% end %>

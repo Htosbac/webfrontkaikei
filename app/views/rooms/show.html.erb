@@ -1,49 +1,93 @@
 <p id="notice"><% notice %></p>
 
+<h1>部屋データの確認</h1>
+
+<table class="tabletype">
+    <tr>
+      <th scope="row">部屋名:</th>
+      <td><%= @room.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Ａ:</th>
+      <td><%= number_with_delimiter(@room.price1.floor) %>円</td>
+    </tr>
+    <tr>
+      <th scope="row">Ｂ:</th>
+      <td><%= number_with_delimiter(@room.price2.floor) %>円</td>
+    </tr>
+    <tr>
+      <th scope="row">Ｃ:</th>
+      <td><%= number_with_delimiter(@room.price3.floor) %>円</td>
+    </tr>
+    <tr>
+      <th scope="row">Ｄ:</th>
+      <td><%= number_with_delimiter(@room.price4.floor) %>円</td>
+    </tr>
+    <tr>
+      <th scope="row">Ｅ:</th>
+      <td><%= number_with_delimiter(@room.price5.floor) %>円</td>
+    </tr>
+    <tr>
+      <th scope="row">Ｆ:</th>
+      <td><%= number_with_delimiter(@room.price6.floor) %>円</td>
+    </tr>
+    <tr>
+      <th scope="row">宿泊可能人数:</th>
+      <td><%= @room.peoplenb %>人</td>
+    </tr>
+    <tr>
+      <th scope="row">部屋タイプ:</th>
+      <td><%= @room.roomtype.name %></td>
+    </tr>
+  </table>
+  
+  
+<!--
 <p>
   <strong>部屋名:</strong>
-  <%= @room.name %>
+  %= @room.name %>
 </p>
 
 <p>
   <strong>平日:</strong>
-  <%= number_with_delimiter(@room.price1.floor) %>
+  %= number_with_delimiter(@room.price1.floor) %>
 </p>
 
 <p>
   <strong>金曜日:</strong>
-  <%= number_with_delimiter(@room.price2.floor) %>
+  %= number_with_delimiter(@room.price2.floor) %>
 </p>
 
 <p>
   <strong>土曜日:</strong>
-  <%= number_with_delimiter(@room.price3.floor) %>
+  %= number_with_delimiter(@room.price3.floor) %>
 </p>
 
 <p>
   <strong>日曜日:</strong>
-  <%= number_with_delimiter(@room.price4.floor) %>
+  %= number_with_delimiter(@room.price4.floor) %>
 </p>
 
 <p>
   <strong>祝日前:</strong>
-  <%= number_with_delimiter(@room.price5.floor) %>
+  %= number_with_delimiter(@room.price5.floor) %>
 </p>
 
 <p>
   <strong>祝日:</strong>
-  <%= number_with_delimiter(@room.price6.floor) %>
+  %= number_with_delimiter(@room.price6.floor) %>
 </p>
 
 <p>
   <strong>宿泊人数:</strong>
-  <%= @room.peoplenb %>
+  %= @room.peoplenb %>
 </p>
 
 <p>
   <strong>部屋タイプ:</strong>
-  <%= @room.roomtype_id %>
+  %= @room.roomtype_id %>
 </p>
+-->
 
 <!--
 <p>

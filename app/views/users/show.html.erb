@@ -1,49 +1,91 @@
 <p id="notice"><% notice %></p>
 
+<h1>ユーザー情報</h1>
+
+<table class="usertable">
+   <tbody>
+  <tr>
+    <th>ユーザ名</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>領収書名1</th>
+    <td><%= @user.invoicename1 %></td>
+  </tr>
+  <tr>
+    <th>領収書名2</th>
+    <td><%= @user.invoicename2 %></td>
+  </tr>
+  <tr>
+    <th>フリガナ</th>
+    <td><%= @user.phonetic %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @user.address %></td>
+  </tr>
+  <tr>
+    <th>電話番号</th>
+    <td><%= @user.tel %></td>
+  </tr>
+  <tr>
+    <th>FAX番号</th>
+    <td><%= @user.fax %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @user.email %></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<!--
 <p>
   <strong>ユーザ名:</strong>
-  <%= @user.name %>
+  %= @user.name %>
 </p>
 
 <p>
   <strong>領収書名1:</strong>
-  <%= @user.invoicename1 %>
+  %= @user.invoicename1 %>
 </p>
 
 <p>
   <strong>領収書名2:</strong>
-  <%= @user.invoicename2 %>
+  %= @user.invoicename2 %>
 </p>
 
 <p>
   <strong>フリガナ:</strong>
-  <%= @user.phonetic %>
+  %= @user.phonetic %>
 </p>
 
 <p>
   <strong>郵便番号:</strong>
-  <%= @user.pstalcode %>
+  %= @user.pstalcode %>
 </p>
 
 <p>
   <strong>住所:</strong>
-  <%= @user.address %>
+  %= @user.address %>
 </p>
 
 <p>
   <strong>電話番号:</strong>
-  <%= @user.tel %>
+  %= @user.tel %>
 </p>
 
 <p>
   <strong>FAX番号:</strong>
-  <%= @user.fax %>
+  %= @user.fax %>
 </p>
 
 <p>
   <strong>E_mail:</strong>
-  <%= @user.email %>
+  %= @user.email %>
 </p>
+-->
 
 <%= link_to '編集', edit_user_path(@user) %> 
 <!--%= link_to 'Back', users_path %>-->
